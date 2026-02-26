@@ -888,6 +888,7 @@ type Mock struct {
 	mockMailGetMailUserMailboxAliasList                        func(ctx context.Context, request *GetMailUserMailboxAliasListReq, options ...MethodOptionFunc) (*GetMailUserMailboxAliasListResp, *Response, error)
 	mockMailDeleteMailUserMailbox                              func(ctx context.Context, request *DeleteMailUserMailboxReq, options ...MethodOptionFunc) (*DeleteMailUserMailboxResp, *Response, error)
 	mockMessageSendEphemeralMessage                            func(ctx context.Context, request *SendEphemeralMessageReq, options ...MethodOptionFunc) (*SendEphemeralMessageResp, *Response, error)
+	mockMessageSendEphemeralTemplate                           func(ctx context.Context, request *SendEphemeralTemplateReq, options ...MethodOptionFunc) (*SendEphemeralMessageResp, *Response, error)
 	mockMessageSendUrgentAppMessage                            func(ctx context.Context, request *SendUrgentAppMessageReq, options ...MethodOptionFunc) (*SendUrgentAppMessageResp, *Response, error)
 	mockMessageSendUrgentSmsMessage                            func(ctx context.Context, request *SendUrgentSmsMessageReq, options ...MethodOptionFunc) (*SendUrgentSmsMessageResp, *Response, error)
 	mockMessageSendUrgentPhoneMessage                          func(ctx context.Context, request *SendUrgentPhoneMessageReq, options ...MethodOptionFunc) (*SendUrgentPhoneMessageResp, *Response, error)
