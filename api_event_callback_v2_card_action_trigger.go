@@ -46,11 +46,13 @@ type EventV2CardActionTrigger struct {
 
 // EventV2CardActionTriggerAction ...
 type EventV2CardActionTriggerAction struct {
-	Value     json.RawMessage `json:"value,omitempty"`  // 交互元素的 value 字段值。
-	Tag       string          `json:"tag,omitempty"`    // 交互元素的 tag 字段值。
-	Option    json.RawMessage `json:"option,omitempty"` // 选中 option 的 value。（button 元素不适用）
-	Name      string          `json:"name,omitempty"`   // 表单容器中，“提交”按钮组件本身的回传属性
-	FormValue json.RawMessage `json:"form_value"`       // 表单容器内用户提交的数据
+	Name       string          `json:"name,omitempty"`        // Custom unique identifier of the component, used to identify a particular component embedded within a form container.
+	Value      json.RawMessage `json:"value,omitempty"`       // Developer-defined custom data bound to the interaction component, corresponding to the value attribute in the component. The data type can be string or object.
+	Tag        string          `json:"tag,omitempty"`         // Label of the interaction component.
+	Option     string          `json:"option,omitempty"`      // When user selects an option from fold button groups, dropdown selections, or person select components not embedded in a form container, the component returns the option callback value.
+	Options    []string        `json:"options,omitempty"`     // Options callback value returned by a component when the user selects an option for that type of component when the dropdown-select-multiselect component and the person-select-multiselect component are not embedded in the form container.
+	FormValue  json.RawMessage `json:"form_value,omitempty"`  // Data submitted by the user inside the form container.
+	InputValue string          `json:"input_value,omitempty"` // Data submitted by the user in the input box component when not embedded in a form container.
 }
 
 // EventV2CardActionTriggerContext ...
