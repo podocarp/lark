@@ -15,6 +15,8 @@
  */
 package lark
 
+import "encoding/json"
+
 // === MessageContentCard ===
 
 // MessageContentCard ...
@@ -1159,13 +1161,21 @@ type I18NText struct {
 //
 // docs: https://open.feishu.cn/document/ukTMukTMukTM/uYzM3QjL2MzN04iNzcDN/send-message-card/send-message-using-card-id
 type MessageContentCardTemplate struct {
-	TemplateID       string                 `json:"template_id"`
-	TemplateVariable map[string]interface{} `json:"template_variable"`
+	TemplateID       string         `json:"template_id"`
+	TemplateVariable map[string]any `json:"template_variable"`
+}
+
+// MarshalJSON ...
+func (r MessageContentCardTemplate) MarshalJSON() ([]byte, error) {
+	return json.Marshal(map[string]any{
+		"type": "template",
+		"data": r,
+	})
 }
 
 // String ...
 func (r MessageContentCardTemplate) String() string {
-	return jsonString(map[string]interface{}{
+	return jsonString(map[string]any{
 		"type": "template",
 		"data": r,
 	})
