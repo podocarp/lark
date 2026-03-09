@@ -1169,14 +1169,14 @@ type MessageContentCardTemplate struct {
 func (r MessageContentCardTemplate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(map[string]any{
 		"type": "template",
-		"data": r,
+		"data": map[string]any{
+			"template_id":       r.TemplateID,
+			"template_variable": r.TemplateVariable,
+		},
 	})
 }
 
 // String ...
 func (r MessageContentCardTemplate) String() string {
-	return jsonString(map[string]any{
-		"type": "template",
-		"data": r,
-	})
+	return jsonString(r)
 }
