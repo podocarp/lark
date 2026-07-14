@@ -59,14 +59,25 @@ func (r *Mock) UnMockHelpdeskGetHelpdeskCategoryList() {
 
 // GetHelpdeskCategoryListReq ...
 type GetHelpdeskCategoryListReq struct {
-	Lang    *string `query:"lang" json:"-"`     // 知识库分类语言, 示例值: "zh_cn"
-	OrderBy *int64  `query:"order_by" json:"-"` // 排序键。1: 根据知识库分类更新时间排序, 示例值: 1
-	Asc     *bool   `query:"asc" json:"-"`      // 顺序。true: 正序；false: 反序, 示例值: true
+	Lang    *string `query:"lang" json:"-"`     // 知识库分类语言示例值: "zh_cn"
+	OrderBy *int64  `query:"order_by" json:"-"` // 排序键。1: 根据知识库分类更新时间排序示例值: 1
+	Asc     *bool   `query:"asc" json:"-"`      // 顺序。true: 正序；false: 反序示例值: true
 }
 
 // GetHelpdeskCategoryListResp ...
 type GetHelpdeskCategoryListResp struct {
 	Categories []*HelpdeskCategory `json:"categories,omitempty"` // 知识库分类列表
+}
+
+// GetHelpdeskCategoryListRespCategory ...
+type GetHelpdeskCategoryListRespCategory struct {
+	CategoryID string        `json:"category_id,omitempty"` // 知识库分类ID
+	ID         string        `json:"id,omitempty"`          // 知识库分类ID, （旧版, 请使用category_id）
+	Name       string        `json:"name,omitempty"`        // 名称
+	ParentID   string        `json:"parent_id,omitempty"`   // 父知识库分类ID
+	HelpdeskID string        `json:"helpdesk_id,omitempty"` // 服务台ID
+	Language   string        `json:"language,omitempty"`    // 语言
+	Children   []interface{} `json:"children,omitempty"`    // 子分类详情
 }
 
 // getHelpdeskCategoryListResp ...

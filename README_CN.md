@@ -38,7 +38,7 @@ https://godoc.org/github.com/chyroc/lark
 
 ## 支持的接口
 
-API 总数: 1098, 事件总数: 152
+API 总数: 1630, 事件总数: 153
 
 <details>
   <summary>
@@ -86,10 +86,54 @@ API 总数: 1098, 事件总数: 152
   - DetectTextLanguage
   - DetectFaceAttributes
 - APaaS
+  - ListAPaaSApp
+  - ListAPaaSApplicationAuditLogAuditLog
+  - GetAPaaSApplicationAuditLogDataChangeLogDetail
+  - ListAPaaSApplicationAuditLogDataChangeLogs
+  - GetAPaaSApplicationAuditLog
+  - GetAPaaSApplicationEnvironmentVariable
+  - QueryAPaaSApplicationEnvironmentVariable
+  - ExecuteAPaaSApplicationFlow
+  - InvokeAPaaSApplicationFunction
+  - BatchCreateAPaaSApplicationObjectRecord
+  - BatchDeleteAPaaSApplicationObjectRecord
+  - BatchQueryAPaaSApplicationObjectRecord
+  - BatchUpdateAPaaSApplicationObjectRecord
+  - CreateAPaaSApplicationObjectRecord
+  - DeleteAPaaSApplicationObjectRecord
+  - UpdateAPaaSApplicationObjectRecord
+  - QueryAPaaSApplicationObjectRecord
+  - QueryAPaaSApplicationObjectOql
+  - SearchAPaaSApplicationObject
+  - BatchCreateAPaaSApplicationRecordPermissionMemberAuthorization
+  - BatchRemoveAPaaSApplicationRecordPermissionMemberAuthorization
+  - BatchCreateAPaaSApplicationRoleMemberAuthorization
+  - BatchRemoveAPaaSApplicationRoleMemberAuthorization
+  - GetAPaaSApplicationRoleMember
+  - CancelAPaaSApprovalInstance
+  - AddAPaaSApprovalTaskAssignee
   - AgreeAPaaSApprovalTask
   - RejectAPaaSApprovalTask
   - TransferAPaaSApprovalTask
-  - AddAssigneeAPaaSApprovalTask
+  - ListAPaaSSeatActivity
+  - ListAPaaSSeatAssignment
+  - CreateAPaaSUserTaskCc
+  - CreateAPaaSUserTaskChatGroup
+  - CreateAPaaSUserTaskExpediting
+  - QueryAPaaSUserTask
+  - CreateAPaaSUserTaskRollback
+  - CreateAPaaSUserTaskRollbackPoints
+  - GetAPaaSWorkspaceEnum
+  - ListAPaaSWorkspaceEnum
+  - ListAPaaSWorkspaceTable
+  - BatchUpdateAPaaSWorkspaceTableRecords
+  - DeleteAPaaSWorkspaceTableRecords
+  - GetAPaaSWorkspaceTableRecords
+  - UpdateAPaaSWorkspaceTableRecordsPatch
+  - CreateAPaaSWorkspaceTableRecords
+  - GetAPaaSWorkspaceTable
+  - GetAPaaSWorkspaceViews
+  - CreateAPaaSWorkspaceSqlCommands
 - Admin
   - AdminResetPassword
   - GetAdminDeptStats
@@ -104,6 +148,28 @@ API 总数: 1098, 事件总数: 152
   - GetAdminBadgeGrantList
   - GetAdminBadgeGrant
   - DeleteAdminBadgeGrant
+- Aily
+  - CreateAilySessionAilyMessage
+  - GetAilySessionAilyMessage
+  - ListAilySessionAilyMessage
+  - CancelAilySessionRun
+  - CreateAilySessionRun
+  - GetAilySessionRun
+  - ListAilySessionRun
+  - CreateAilySession
+  - DeleteAilySession
+  - GetAilySession
+  - UpdateAilySession
+  - CreateAilyAppDataAsset
+  - DeleteAilyAppDataAsset
+  - GetAilyAppDataAsset
+  - ListAilyAppDataAsset
+  - UploadAilyAppDataAssetFile
+  - ListAilyAppDataAssetTag
+  - CreateAilyAppKnowledgeAsk
+  - GetAilyAppSkill
+  - ListAilyAppSkill
+  - StartAilyAppSkill
 - AppLink
   - OpenNativeApp
   - OpenLark
@@ -159,6 +225,13 @@ API 总数: 1098, 事件总数: 152
   - UpdateApplicationFeedback
   - GetApplicationFeedbackList
   - SetApplicationAppBadge
+  - CreateApplicationAppUsageMessagePushOverview
+  - GetApplicationCollaborators
+  - UpdateApplicationCollaborators
+  - UpdateApplicationOwner
+  - ListApplication
+  - CreateApplicationScopeApply
+  - ListApplicationScope
 - Approval
   - CreateApproval
   - GetApproval
@@ -227,11 +300,26 @@ API 总数: 1098, 事件总数: 152
   - UpdateAttendanceUserSetting
   - DownloadAttendanceFile
   - UploadAttendanceFile
+  - DeleteAttendanceArchiveRuleReport
+  - ListAttendanceArchiveRule
+  - UploadAttendanceArchiveRuleReport
+  - CreateAttendanceArchiveRuleUserStatsFieldsQuery
+  - ListAttendanceGroupUser
+  - BatchCreateAttendanceUserDailyShiftTemp
+  - BatchDeleteAttendanceUserFlow
 - Auth
   - ResendAppTicket
   - GetAccessToken
   - RefreshAccessToken
   - GetUserInfo
+  - GenOAuthURL
+  - GetAppAccessToken
+  - GetAppTicket
+  - GetTenantAccessToken
+  - SetAppTicket
+- Authen
+  - CreateAuthenAccessToken
+  - CreateAuthenRefreshAccessToken
 - Baike
   - CreateBaikeDraft
   - CreateBaikeUpdate
@@ -290,6 +378,10 @@ API 总数: 1098, 事件总数: 152
   - CreateBitableApp
   - GetBitableMeta
   - UpdateBitableMeta
+  - ListBitableAppBlockWorkflow
+  - BatchGetBitableAppTableRecord
+  - ListBitableAppWorkflow
+  - UpdateBitableAppWorkflow
 - Bot
   - GetBotInfo
   - AddBotToChat
@@ -337,6 +429,21 @@ API 总数: 1098, 事件总数: 152
   - CreateCalendarExchangeBinding
   - DeleteCalendarExchangeBinding
   - GetCalendarExchangeBinding
+  - CreateCalendarEventMeetingMinute
+  - MGetCalendar
+  - CreateCalendarPrimarys
+  - BatchQueryCalendarFreebusy
+- Cardkit
+  - UpdateCardkitCardElementContent
+  - CreateCardkitCardElement
+  - DeleteCardkitCardElement
+  - UpdateCardkitCardElement
+  - UpdateCardkitCardElementV1
+  - BatchUpdateCardkitCard
+  - CreateCardkitCard
+  - CreateCardkitCardIDConvert
+  - UpdateCardkitCardSettings
+  - UpdateCardkitCard
 - Chat
   - CreateChat
   - GetChat
@@ -369,6 +476,22 @@ API 总数: 1098, 事件总数: 152
   - UpdateChatMenuTree
   - SortChatMenuTree
   - GetChatMenuTree
+- Compensation
+  - CreateCompensationArchive
+  - BatchCreateCompensationLumpSumPayment
+  - BatchRemoveCompensationLumpSumPayment
+  - BatchUpdateCompensationLumpSumPayment
+  - QueryCompensationLumpSumPayment
+  - QueryCompensationLumpSumPaymentDetail
+  - BatchCreateCompensationRecurringPayment
+  - BatchRemoveCompensationRecurringPayment
+  - BatchUpdateCompensationRecurringPayment
+  - QueryCompensationRecurringPayment
+  - QueryCompensationSocialArchive
+  - QueryCompensationSocialArchiveAdjustRecord
+  - ListCompensationSocialInsurance
+  - ListCompensationSocialPlan
+  - QueryCompensationSocialPlan
 - Contact
   - CreateUser
   - DeleteUser
@@ -442,6 +565,10 @@ API 总数: 1098, 事件总数: 152
   - UnbindContactUnitDepartment
   - GetContactUnitDepartmentList
   - GetContactScopeList
+  - BatchAddContactV2User
+  - BatchAddContactV2Department
+  - GetContactV2Task
+  - ListContactV2Role
 - CoreHR
   - SearchCoreHRNationality
   - SearchCoreHRBank
@@ -495,14 +622,12 @@ API 总数: 1098, 事件总数: 152
   - QueryCoreHRJobData
   - BatchGetCoreHRJobData
   - GetCoreHRJobDataList
-  - GetCoreHRDepartment
-  - SearchCoreHRDepartment
-  - QueryCoreHRDepartmentTimeline
-  - BatchQueryCoreHRDepartmentTimeline
   - GetCoreHRDepartmentParentList
+  - SearchCoreHRDepartment
   - CreateCoreHRDepartment
   - DeleteCoreHRDepartment
   - UpdateCoreHRDepartment
+  - GetCoreHRDepartment
   - BatchGetCoreHRDepartment
   - GetCoreHRDepartmentList
   - BatchGetCoreHRLocation
@@ -529,7 +654,6 @@ API 总数: 1098, 事件总数: 152
   - UpdateCoreHRJobLevel
   - GetCoreHRJobLevel
   - GetCoreHRJobLevelList
-  - QueryCoreHRJobGrade
   - BatchGetCoreHRJobFamily
   - CreateCoreHRJobFamily
   - DeleteCoreHRJobFamily
@@ -543,7 +667,6 @@ API 总数: 1098, 事件总数: 152
   - GetCoreHRJobListV2
   - GetCoreHRJob
   - GetCoreHRJobList
-  - SearchCoreHRPreHire
   - CreateCoreHRPreHire
   - DeleteCoreHRPreHire
   - UpdateCoreHRPreHire
@@ -572,204 +695,383 @@ API 总数: 1098, 事件总数: 152
   - GetCoreHRLeaveTypeList
   - GetCoreHRLeaveBalanceList
   - GetCoreHRLeaveRequestHistoryList
-  - BatchGetCoreHrbpByEmployee
-  - GetCoreHrbpByDepartment
-  - GetCoreHrbpList
+  - BatchGetCoreHRByEmployee
+  - GetCoreHRByDepartment
+  - GetCoreHRList
   - GetCoreHRSecurityGroupBp
   - SearchCoreHRAssignedUser
   - GetCoreHRAuthorization
+  - GetCoreHRAuthorizationList
   - GetCoreHRSecurityGroupList
   - GetCoreHRProcessList
   - GetCoreHRProcess
   - GetCoreHRProcessFormVariableData
-  - QueryCoreHRCompensationArchive
-  - GetCoreHRCompensationItemList
-  - GetCoreHRCompensationIndicatorList
-  - GetCoreHRCompensationItemCategoryList
   - MatchCoreHRCompensationStandard
-  - GetCoreHRCompensationPlanList
+  - QueryCoreHRCompensationArchive
   - GetCoreHRCompensationChangeReasonList
+  - GetCoreHRCompensationIndicatorList
+  - GetCoreHRCompensationItemList
+  - GetCoreHRCompensationItemCategoryList
+  - GetCoreHRCompensationPlanList
+  - GetCoreHRApprovalGroups
+  - QueryCoreHRApprovalGroupsDepartmentChangeListByIDs
+  - QueryCoreHRApprovalGroupsJobChangeListByIDs
+  - QueryCoreHRApprovalGroupsPositionChangeListByIDs
+  - ListCoreHRApprover
+  - SearchCoreHRBasicInfoLanguage
+  - SearchCoreHRBasicInfoTimeZone
+  - CreateCoreHRCompanyActive
+  - QueryCoreHRCompanyMultiTimeline
+  - QueryCoreHRCompanyRecentChange
+  - BatchQueryCoreHRCostAllocation
+  - CreateCoreHRCostAllocationVersion
+  - RemoveCoreHRCostAllocationVersion
+  - UpdateCoreHRCostAllocationVersion
+  - QueryCoreHRCostCenterRecentChange
+  - CreateCoreHRCustomOrgActive
+  - CreateCoreHRCustomOrg
+  - DeleteCoreHRCustomOrg
+  - UpdateCoreHRCustomOrg
+  - QueryCoreHRCustomOrg
+  - QueryCoreHRCustomOrgRecentChange
+  - UpdateCoreHRCustomOrgRule
+  - BatchQueryCoreHRDefaultCostCenter
+  - CreateCoreHRDefaultCostCenterVersion
+  - RemoveCoreHRDefaultCostCenterVersion
+  - UpdateCoreHRDefaultCostCenterVersion
+  - DeleteCoreHRDepartment
+  - UpdateCoreHRDepartment
+  - BatchQueryCoreHRDepartmentTimeline
+  - QueryCoreHRDepartmentOperationLogs
+  - QueryCoreHRDepartmentRecentChange
+  - QueryCoreHRDepartmentTimeline
+  - CreateCoreHRDepartmentTree
+  - GetCoreHRDraft
+  - CreateCoreHREmployee
+  - BatchQueryCoreHREmployeesAdditionalJob
+  - CreateCoreHREmployeesAdditionalJob
+  - DeleteCoreHREmployeesAdditionalJob
+  - UpdateCoreHREmployeesAdditionalJob
+  - CreateCoreHREmployeesInternationalAssignment
+  - DeleteCoreHREmployeesInternationalAssignment
+  - ListCoreHREmployeesInternationalAssignment
+  - UpdateCoreHREmployeesInternationalAssignment
+  - SearchCoreHREnum
+  - BatchGetCoreHRJob
+  - QueryCoreHRJobMultiTimeline
+  - QueryCoreHRJobRecentChange
+  - CreateCoreHRJobChange
+  - RevokeCoreHRJobChange
+  - QueryCoreHRJobFamilyMultiTimeline
+  - QueryCoreHRJobFamilyRecentChange
+  - CreateCoreHRJobGrade
+  - DeleteCoreHRJobGrade
+  - UpdateCoreHRJobGrade
+  - QueryCoreHRJobGrade
+  - QueryCoreHRJobGradeRecentChange
+  - QueryCoreHRJobLevelRecentChange
+  - CreateCoreHRLocationAddress
+  - DeleteCoreHRLocationAddress
+  - UpdateCoreHRLocationAddress
+  - CreateCoreHRLocationActive
+  - UpdateCoreHRLocation
+  - QueryCoreHRLocationMultiTimeline
+  - QueryCoreHRLocationRecentChange
+  - CreateCoreHROffboardingEdit
+  - RevokeCoreHROffboarding
+  - SubmitCoreHROffboardingV2
+  - CreateCoreHRPathwayActive
+  - BatchGetCoreHRPathway
+  - CreateCoreHRPathway
+  - DeleteCoreHRPathway
+  - UpdateCoreHRPathway
+  - CreateCoreHRPositionActive
+  - CreateCoreHRPosition
+  - DeleteCoreHRPosition
+  - UpdateCoreHRPosition
+  - QueryCoreHRPosition
+  - QueryCoreHRPositionRecentChange
+  - CompleteCoreHRPreHire
+  - DeleteCoreHRPreHire
+  - UpdateCoreHRPreHire
+  - QueryCoreHRPreHire
+  - RestoreCoreHRPreHireFlowInstance
+  - SearchCoreHRPreHire
+  - TransformCoreHRPreHireOnboardingTask
+  - TransitCoreHRPreHireTask
+  - WithdrawCoreHRPreHireOnboarding
+  - SubmitCoreHRProbation
+  - WithdrawCoreHRProbation
+  - UpdateCoreHRProcessApprover
+  - UpdateCoreHRProcessExtra
+  - GetCoreHRProcessFormVariableData
+  - QueryCoreHRProcessFlowDataTemplate
+  - UpdateCoreHRProcessTransfer
+  - GetCoreHRProcessFlowVariableData
+  - UpdateCoreHRProcessRevoke
+  - CreateCoreHRProcessStart
+  - UpdateCoreHRProcessWithdraw
+  - BatchDeleteCoreHRReportDetailRow
+  - BatchSaveCoreHRReportDetailRow
+  - DownloadCoreHRSignatureFile
+  - ListCoreHRSignatureFile
+  - ListCoreHRSignatureFileByBizID
+  - QueryCoreHRSignatureFile
+  - TerminateCoreHRSignatureFile
+  - ListCoreHRSignatureNodeByFileID
+  - SearchCoreHRSignatureTemplate
+  - ListCoreHRSignatureTemplateInfoWithThumbnail
+  - ListCoreHRWorkforcePlan
+  - BatchQueryCoreHRWorkforcePlanDetail
+  - BatchQueryCoreHRWorkforcePlanDetailV2
+  - BatchDeleteCoreHRWorkforcePlanDetailRow
+  - BatchSaveCoreHRWorkforcePlanDetailRow
+  - AddCoreHRAuthorizationRoleAssign
+  - GetCoreHRAuthorization
+  - GetCoreHRAuthorizationList
+  - RemoveCoreHRAuthorizationRoleAssign
+  - UpdateCoreHRAuthorizationRoleAssign
+  - CreateCoreHRCommonDataIDConvert
+  - AddCoreHRCommonDataMetaDataEnumOption
+  - CreateCoreHRCommonDataMetaDataEditEnumOption
+  - MatchCoreHRCompensationStandard
+  - GetCoreHRLeaveCalendarByScope
+  - CreateCoreHRLeaveWorkCalendar
+  - CreateCoreHRLeaveWorkCalendarDate
+  - CreateCoreHRPerson
+  - UpdateCoreHRPerson
+  - CreateCoreHRJobChangeV2
+  - CreateCoreHRPersonV1
+  - DeleteCoreHRDepartmentV2
+  - DeleteCoreHRPreHireV2
+  - GetCoreHRProcessFormVariableDataV2
+  - UpdateCoreHRDepartmentV2
+  - UpdateCoreHRPersonV1
+  - UpdateCoreHRPreHireV2
+- Directory
+  - CreateDirectoryCollaborationRule
+  - DeleteDirectoryCollaborationRule
+  - ListDirectoryCollaborationRule
+  - UpdateDirectoryCollaborationRule
+  - ListDirectoryCollaborationTenant
+  - ListDirectoryCollborationShareEntity
+  - CreateDirectoryDepartment
+  - DeleteDirectoryDepartment
+  - CreateDirectoryDepartmentFilter
+  - MGetDirectoryDepartment
+  - UpdateDirectoryDepartment
+  - SearchDirectoryDepartment
+  - CreateDirectoryEmployee
+  - DeleteDirectoryEmployee
+  - CreateDirectoryEmployeeFilter
+  - MGetDirectoryEmployee
+  - UpdateDirectoryEmployee
+  - UpdateDirectoryEmployeeRegular
+  - CreateDirectoryEmployeeResurrect
+  - SearchDirectoryEmployee
+  - UpdateDirectoryEmployeeToBeResigned
 - Drive
-  - GetDriveRootFolderMeta
-  - GetDriveFileList
-  - GetDriveFolderMeta
-  - CreateDriveFolder
-  - GetDriveFileMeta
-  - CreateDriveFile
-  - CopyDriveFile
-  - MoveDriveFile
-  - DeleteDriveFile
-  - GetDriveFileStatistics
-  - CreateDriveFileShortcut
-  - GetDriveFileTask
-  - UploadDriveMedia
-  - DownloadDriveMedia
-  - PrepareUploadDriveMedia
-  - PartUploadDriveMedia
-  - FinishUploadDriveMedia
-  - GetDocxDocument
-  - GetDocxDocumentRawContent
-  - GetDocxBlockListOfDocument
-  - CreateDocx
-  - GetDocxBlock
-  - CreateDocxBlock
-  - UpdateDocxBlock
-  - BatchDeleteDocxBlock
-  - GetDocxBlockListOfBlock
-  - SubscribeDriveFile
-  - UnsubscribeDriveFile
-  - GetSubscribeDriveFile
-  - SearchDriveFile
-  - DeleteDriveSheetFile
-  - GetDriveFolderChildren
-  - CreateDriveExportTask
-  - GetDriveExportTask
-  - DownloadDriveExportTask
-  - GetDriveFileViewRecordList
-  - CreateDriveFileVersion
-  - DeleteDriveFileVersion
-  - GetDriveFileVersion
-  - GetDriveFileVersionList
-  - DownloadDriveFile
-  - UploadDriveFile
-  - PrepareUploadDriveFile
-  - PartUploadDriveFile
-  - FinishUploadDriveFile
-  - CreateDriveMemberPermissionOld
-  - TransferDriveOwnerPermission
-  - CheckDriveMemberPermission
-  - GetDriveMemberPermissionList
-  - GetDriveMemberPermissionListOld
-  - CreateDriveMemberPermission
-  - UpdateDriveMemberPermission
-  - DeleteDriveMemberPermission
-  - GetDrivePublicPermissionOld
-  - CreateDrivePermissionPublicPassword
-  - UpdateDrivePermissionPublicPassword
-  - DeleteDrivePermissionPublicPassword
-  - GetDrivePublicPermission
-  - UpdateDrivePublicPermission
-  - GetDrivePublicPermissionV2
-  - UpdateDrivePublicPermissionV2
-  - BatchGetDriveMediaTmpDownloadURL
-  - GetDriveCommentList
-  - CreateDriveComment
-  - GetDriveComment
-  - BatchGetDriveComment
-  - GetDriveCommentReplyList
-  - UpdateDriveComment
-  - DeleteDriveComment
-  - UpdateDriveCommentPatch
-  - GetDriveFileSubscription
-  - CreateDriveFileSubscription
-  - UpdateDriveFileSubscription
-  - CreateDriveDoc
-  - GetDriveDocContent
-  - UpdateDriveDocContent
-  - GetDriveDocRawContent
-  - GetDriveDocMeta
-  - GetWhiteboardNodeList
-  - UpdateSpreadsheet
-  - GetSpreadsheet
-  - CreateSpreadsheet
-  - GetSheetMeta
-  - UpdateSheetProperty
-  - GetSheet
-  - GetSheetList
-  - BatchUpdateSheet
-  - ImportSheet
-  - CreateDriveImportTask
-  - GetDriveImportTask
-  - MoveSheetDimension
-  - PrependSheetValue
-  - AppendSheetValue
-  - InsertSheetDimensionRange
   - AddSheetDimensionRange
-  - UpdateSheetDimensionRange
-  - DeleteSheetDimensionRange
-  - GetSheetValue
+  - AddWikiSpaceMember
+  - AppendSheetValue
+  - BatchCreateDrivePermissionMember
+  - BatchDeleteDocxBlock
+  - BatchGetDriveComment
+  - BatchGetDriveMediaTmpDownloadURL
   - BatchGetSheetValue
-  - SetSheetValue
-  - BatchSetSheetValue
-  - SetSheetStyle
   - BatchSetSheetStyle
-  - MergeSheetCell
-  - UnmergeSheetCell
-  - SetSheetValueImage
-  - FindSheet
-  - ReplaceSheet
+  - BatchSetSheetValue
+  - BatchUpdateSheet
+  - CheckDriveMemberPermissionOld
+  - CheckDriveMemberPermission
+  - CopyDriveFile
+  - CopyWikiNode
+  - CreateDocxBlock
+  - CreateDocx
+  - CreateDriveComment
+  - CreateDriveDoc
+  - CreateDriveExportTask
+  - CreateDriveFileShortcut
+  - CreateDriveFileSubscription
+  - CreateDriveFileVersion
+  - CreateDriveFile
+  - CreateDriveFolder
+  - CreateDriveImportTask
+  - CreateDriveMemberPermissionOld
+  - CreateDriveMemberPermission
+  - CreateDrivePermissionPublicPassword
   - CreateSheetConditionFormat
-  - GetSheetConditionFormat
-  - UpdateSheetConditionFormat
-  - DeleteSheetConditionFormat
-  - CreateSheetProtectedDimension
-  - GetSheetProtectedDimension
-  - UpdateSheetProtectedDimension
-  - DeleteSheetProtectedDimension
   - CreateSheetDataValidationDropdown
-  - DeleteSheetDataValidationDropdown
-  - UpdateSheetDataValidationDropdown
-  - GetSheetDataValidationDropdown
-  - CreateSheetFilter
-  - DeleteSheetFilter
-  - UpdateSheetFilter
-  - GetSheetFilter
-  - CreateSheetFilterView
-  - DeleteSheetFilterView
-  - UpdateSheetFilterView
-  - GetSheetFilterView
-  - QuerySheetFilterView
   - CreateSheetFilterViewCondition
-  - DeleteSheetFilterViewCondition
-  - UpdateSheetFilterViewCondition
-  - GetSheetFilterViewCondition
-  - QuerySheetFilterViewCondition
+  - CreateSheetFilterView
+  - CreateSheetFilter
   - CreateSheetFloatImage
-  - DeleteSheetFloatImage
-  - UpdateSheetFloatImage
-  - GetSheetFloatImage
-  - QuerySheetFloatImage
+  - CreateSheetProtectedDimension
+  - CreateSpreadsheet
+  - CreateWikiNode
   - CreateWikiSpace
+  - DeleteDriveComment
+  - DeleteDriveFileVersion
+  - DeleteDriveFile
+  - DeleteDriveMemberPermissionOld
+  - DeleteDriveMemberPermission
+  - DeleteDrivePermissionPublicPassword
+  - DeleteDriveSheetFile
+  - DeleteSheetConditionFormat
+  - DeleteSheetDataValidationDropdown
+  - DeleteSheetDimensionRange
+  - DeleteSheetFilterViewCondition
+  - DeleteSheetFilterView
+  - DeleteSheetFilter
+  - DeleteSheetFloatImage
+  - DeleteSheetProtectedDimension
+  - DeleteWikiSpaceMember
+  - DownloadDriveExportTask
+  - DownloadDriveFile
+  - DownloadDriveMedia
+  - FindSheet
+  - FinishUploadDriveFile
+  - FinishUploadDriveMedia
+  - GetDocxBlockListOfBlock
+  - GetDocxBlockListOfDocument
+  - GetDocxBlock
+  - GetDocxDocumentRawContent
+  - GetDocxDocument
+  - GetDriveCommentList
+  - GetDriveCommentReplyList
+  - GetDriveComment
+  - GetDriveDocContent
+  - GetDriveDocMeta
+  - GetDriveDocRawContent
+  - GetDriveExportTask
+  - GetDriveFileList
+  - GetDriveFileMeta
+  - GetDriveFileStatistics
+  - GetDriveFileSubscription
+  - GetDriveFileTask
+  - GetDriveFileVersionList
+  - GetDriveFileVersion
+  - GetDriveFileViewRecordList
+  - GetDriveFolderChildren
+  - GetDriveFolderMeta
+  - GetDriveImportTask
+  - GetDriveMemberPermissionListOld
+  - GetDriveMemberPermissionList
+  - GetDrivePublicPermissionOld
+  - GetDrivePublicPermissionV2
+  - GetDrivePublicPermission
+  - GetDriveRootFolderMeta
+  - GetDriveSheetDefaultImportResult
+  - GetSheetConditionFormat
+  - GetSheetDataValidationDropdown
+  - GetSheetFilterViewCondition
+  - GetSheetFilterView
+  - GetSheetFilter
+  - GetSheetFloatImage
+  - GetSheetList
+  - GetSheetMeta
+  - GetSheetProtectedDimension
+  - GetSheetValue
+  - GetSheet
+  - GetSpreadsheet
+  - GetSubscribeDriveFile
+  - GetWikiNodeList
+  - GetWikiNode
   - GetWikiSpaceList
   - GetWikiSpace
-  - UpdateWikiSpaceSetting
-  - DeleteWikiSpaceMember
-  - AddWikiSpaceMember
-  - CreateWikiNode
-  - GetWikiNodeList
-  - MoveWikiNode
-  - UpdateWikiNodeTitle
-  - CopyWikiNode
-  - GetWikiNode
-  - MoveDocsToWiki
   - GetWikiTask
-  - DeleteDriveMemberPermissionOld
-  - UpdateDriveMemberPermissionOld
+  - ImportSheet
+  - InsertSheetDimensionRange
+  - ListDriveFileLike
+  - ListWikiSpaceMember
+  - MergeSheetCell
+  - MoveDocsToWiki
+  - MoveDriveFile
+  - MoveSheetDimension
+  - MoveWikiNode
+  - PartUploadDriveFile
+  - PartUploadDriveMedia
+  - PrepareUploadDriveFile
+  - PrepareUploadDriveMedia
+  - PrependSheetValue
+  - QuerySheetFilterViewCondition
+  - QuerySheetFilterView
+  - QuerySheetFloatImage
+  - ReplaceSheet
+  - SearchDriveFile
+  - SearchWikiNode
+  - SetSheetStyle
+  - SetSheetValueImage
+  - SetSheetValue
+  - SubscribeDriveFile
   - TransferDriveMemberPermission
-  - CheckDriveMemberPermissionOld
+  - TransferDriveOwnerPermission
+  - UnmergeSheetCell
+  - UnsubscribeDriveFile
+  - UpdateDocxBlock
+  - UpdateDriveCommentPatch
+  - UpdateDriveComment
+  - UpdateDriveDocContent
+  - UpdateDriveFileSubscription
+  - UpdateDriveMemberPermissionOld
+  - UpdateDriveMemberPermission
+  - UpdateDrivePermissionPublicPassword
+  - UpdateDrivePublicPermissionV2
+  - UpdateDrivePublicPermission
+  - UpdateSheetConditionFormat
+  - UpdateSheetDataValidationDropdown
+  - UpdateSheetDimensionRange
+  - UpdateSheetFilterViewCondition
+  - UpdateSheetFilterView
+  - UpdateSheetFilter
+  - UpdateSheetFloatImage
+  - UpdateSheetProperty
+  - UpdateSheetProtectedDimension
+  - UpdateSpreadsheet
+  - UpdateWikiNodeTitle
+  - UpdateWikiSpaceSetting
+  - UploadDriveFile
+  - UploadDriveMedia
+  - CreateBaseAppRole
+  - ListBaseAppRole
+  - UpdateBaseAppRole
+  - CreateCcmDocsDefaultDocsApiMeta
+  - CreateBoardWhiteboardNode
+  - CreateBoardWhiteboardNodePlantuml
+  - GetWhiteboardNodeList
+  - DownloadBoardWhiteboardAsImage
+  - GetBoardWhiteboardTheme
+  - UpdateBoardWhiteboardTheme
+  - GetDocsContent
+  - BatchDeleteDocxChatAnnouncementBlockChildren
+  - CreateDocxChatAnnouncementBlockChildren
+  - GetDocxChatAnnouncementBlockChildren
+  - BatchUpdateDocxChatAnnouncementBlock
+  - GetDocxChatAnnouncementBlock
+  - ListDocxChatAnnouncementBlock
+  - GetDocxChatAnnouncement
+  - CreateDocxDocumentBlockDescendant
+  - BatchUpdateDocxDocumentBlock
+  - CreateDocxDocumentConvert
 - EHR
   - GetEHREmployeeList
   - DownloadEHRAttachments
 - Event
   - GetEventOutboundIpList
 - EventCallback
-  - EventV2CorehrOffboardingUpdatedV2
-  - EventV2CorehrOffboardingStatusUpdatedV2
-  - EventV2CorehrOffboardingChecklistUpdatedV2
-  - EventV2CardActionTrigger
   - EventV2ElearningCourseRegistrationCreatedV2
   - EventV2ElearningCourseRegistrationUpdatedV2
   - EventV2ElearningCourseRegistrationDeletedV2
   - EventV2URLPreviewGet
   - EventV2HireApplicationStageChangedV1
   - EventV2HireApplicationDeletedV1
-  - EventV2CorehrJobCreatedV1
-  - EventV2CorehrJobUpdatedV1
-  - EventV2CorehrJobDeletedV1
-  - EventV2CorehrProcessUpdatedV2
-  - EventV2CorehrProcessNodeUpdatedV2
-  - EventV2CorehrProcessApproverUpdatedV2
-  - EventV2CorehrProcessCcUpdatedV2
+  - EventV2CoreHRJobCreatedV1
+  - EventV2CoreHRJobUpdatedV1
+  - EventV2CoreHRJobDeletedV1
+  - EventV2CoreHRProcessUpdatedV2
+  - EventV2CoreHRProcessNodeUpdatedV2
+  - EventV2CoreHRProcessApproverUpdatedV2
+  - EventV2CoreHRProcessCcUpdatedV2
   - EventV2ContactCustomAttrEventUpdatedV3
   - EventV2ApplicationApplicationCreatedV6
   - EventV1AppOpen
@@ -877,34 +1179,39 @@ API 总数: 1098, 事件总数: 152
   - EventV2VCReserveConfigUpdatedV1
   - EventV2ApplicationBotMenuV6
   - EventV2HireOfferStatusChangedV1
-  - EventV2CorehrEmploymentCreatedV1
-  - EventV2CorehrEmploymentUpdatedV1
-  - EventV2CorehrEmploymentDeletedV1
-  - EventV2CorehrPersonCreatedV1
-  - EventV2CorehrPersonUpdatedV1
-  - EventV2CorehrPersonDeletedV1
-  - EventV2CorehrDepartmentCreatedV1
-  - EventV2CorehrDepartmentUpdatedV1
-  - EventV2CorehrDepartmentDeletedV1
-  - EventV2CorehrJobDataEmployedV1
-  - EventV2CorehrContractCreatedV1
-  - EventV2CorehrEmploymentConvertedV1
-  - EventV2CorehrJobChangeUpdatedV1
-  - EventV2CorehrJobDataChangedV1
-  - EventV2CorehrOffboardingUpdatedV1
-  - EventV2CorehrEmploymentResignedV1
-  - EventV2CorehrOrgRoleAuthorizationUpdatedV1
+  - EventV2CoreHREmploymentCreatedV1
+  - EventV2CoreHREmploymentUpdatedV1
+  - EventV2CoreHREmploymentDeletedV1
+  - EventV2CoreHRPersonCreatedV1
+  - EventV2CoreHRPersonUpdatedV1
+  - EventV2CoreHRPersonDeletedV1
+  - EventV2CoreHRDepartmentCreatedV1
+  - EventV2CoreHRDepartmentUpdatedV1
+  - EventV2CoreHRDepartmentDeletedV1
+  - EventV2CoreHRJobDataEmployedV1
+  - EventV2CoreHRContractCreatedV1
+  - EventV2CoreHREmploymentConvertedV1
+  - EventV2CoreHRJobChangeUpdatedV1
+  - EventV2CoreHRJobDataChangedV1
+  - EventV2CoreHROffboardingUpdatedV1
+  - EventV2CoreHREmploymentResignedV1
+  - EventV2CoreHROrgRoleAuthorizationUpdatedV1
   - EventV2HireEHRImportTaskForInternshipOfferImportedV1
   - EventV2HireEHRImportTaskImportedV1
-  - EventV2CorehrProbationUpdatedV2
-  - EventV2CorehrPreHireUpdatedV1
+  - EventV2CoreHRProbationUpdatedV2
+  - EventV2CoreHRPreHireUpdatedV1
   - EventV2HireEcoAccountCreatedV1
   - EventV2HireEcoBackgroundCheckCreatedV1
   - EventV2HireEcoBackgroundCheckCanceledV1
   - EventV2HireEcoExamCreatedV1
   - EventV2HireReferralAccountAssetsUpdateV1
-  - EventV2CorehrContractDeletedV1
-  - EventV2CorehrContractUpdatedV1
+  - EventV2CoreHRContractDeletedV1
+  - EventV2CoreHRContractUpdatedV1
+  - EventV1TripApproval
+  - EventV2CardActionTrigger
+  - EventV2CorehrOffboardingChecklistUpdatedV2
+  - EventV2CorehrOffboardingStatusUpdatedV2
+  - EventV2CorehrOffboardingUpdatedV2
 - File
   - UploadImage
   - DownloadImage
@@ -984,7 +1291,6 @@ API 总数: 1098, 事件总数: 152
   - AddHireTalentToFolder
   - GetHireTalentFolderList
   - BatchGetHireTalent
-  - GetHireTalentList
   - GetHireJobProcessList
   - CreateHireApplication
   - TerminateHireApplication
@@ -1033,6 +1339,117 @@ API 总数: 1098, 事件总数: 152
   - DeactivateHireReferralAccount
   - WithdrawHireReferralAccount
   - ReconcileHireReferralAccount
+  - GetHireInterviewRecord
+  - ListHireInterviewRecord
+  - GetHireTalentV2
+  - CreateHireAttachment
+  - CreateHireAdvertisementPublish
+  - BatchQueryHireAgency
+  - GetHireAgency
+  - GetHireAgencyAccount
+  - CreateHireAgencyOperateAgencyAccount
+  - CreateHireAgencyProtect
+  - CreateHireAgencyProtectSearch
+  - QueryHireAgency
+  - CancelHireApplicationOnboard
+  - GetHireApplicationDetail
+  - CreateHireApplicationRecover
+  - TransferHireApplicationStage
+  - BatchQueryHireBackgroundCheckOrder
+  - ListHireBackgroundCheckOrder
+  - SearchHireDiversityInclusion
+  - ListHireEvaluationTask
+  - CreateHireExam
+  - ListHireExamMarkingTask
+  - ListHireExternalApplication
+  - BatchQueryHireExternalBackgroundCheck
+  - DeleteHireExternalBackgroundCheck
+  - UpdateHireExternalBackgroundCheck
+  - BatchQueryHireExternalInterview
+  - DeleteHireExternalInterview
+  - UpdateHireExternalInterview
+  - UpdateHireExternalInterviewAssessment
+  - BatchQueryHireExternalOffer
+  - CreateHireExternalOffer
+  - DeleteHireExternalOffer
+  - UpdateHireExternalOffer
+  - CreateHireExternalReferralReward
+  - DeleteHireExternalReferralReward
+  - GetHireInterviewByTalent
+  - ListHireInterviewFeedbackForm
+  - GetHireInterviewRecordAttachment
+  - GetHireInterviewRecordV1
+  - ListHireInterviewRecordV1
+  - ListHireInterviewRegistrationSchema
+  - ListHireInterviewRoundType
+  - ListHireInterviewTask
+  - ListHireInterviewer
+  - UpdateHireInterviewer
+  - CloseHireJob
+  - GetHireJobDetail
+  - ListHireJob
+  - OpenHireJob
+  - GetHireJobRecruiter
+  - ListHireJobFunction
+  - SearchHireJobPublishRecord
+  - CreateHireJobRequirement
+  - DeleteHireJobRequirement
+  - ListHireJobRequirement
+  - ListHireJobRequirementByID
+  - UpdateHireJobRequirement
+  - ListHireJobRequirementSchema
+  - ListHireJobSchema
+  - ListHireJobType
+  - ListHireLocation
+  - QueryHireLocation
+  - GetHireMinutes
+  - DeleteHireNote
+  - GetHireOfferApplicationForm
+  - ListHireOfferApplicationForm
+  - ListHireOfferApprovalTemplate
+  - UpdateHireOfferCustomField
+  - ListHirePortalApplySchema
+  - SearchHireReferral
+  - CreateHireReferralAccountEnable
+  - GetHireReferralAccountAssets
+  - ListHireRegistrationSchema
+  - GetHireRole
+  - ListHireRole
+  - ListHireSubject
+  - CreateHireTalentExternalInfo
+  - UpdateHireTalentExternalInfo
+  - CreateHireTalentCombined
+  - UpdateHireTalentCombined
+  - GetHireTalentList
+  - CreateHireTalentOnboardStatus
+  - RemoveHireTalentToFolder
+  - CreateHireTalentTag
+  - SearchHireTalentOperationLog
+  - CreateHireTalentBlocklistChangeTalentBlock
+  - BatchHireTalentPoolChangeTalentPool
+  - CreateHireTalentPoolMoveTalent
+  - SearchHireTalentPool
+  - ListHireTalentTag
+  - ListHireTerminationReason
+  - SearchHireTest
+  - ListHireTodo
+  - CreateHireTripartiteAgreement
+  - DeleteHireTripartiteAgreement
+  - ListHireTripartiteAgreement
+  - UpdateHireTripartiteAgreement
+  - ListHireUserRole
+  - CreateHireWebsiteChannel
+  - DeleteHireWebsiteChannel
+  - ListHireWebsiteChannel
+  - UpdateHireWebsiteChannel
+  - CreateHireWebsiteDeliveryByAttachment
+  - CreateHireWebsiteDeliveryByResume
+  - GetHireWebsiteDeliveryTask
+  - GetHireWebsiteJobPost
+  - ListHireWebsiteJobPost
+  - SearchHireWebsiteJobPost
+  - CreateHireWebsiteSiteUser
+  - ListHireWebsite
 - HumanAuth
   - GetFaceVerifyAuthResult
   - UploadFaceVerifyImage
@@ -1040,6 +1457,7 @@ API 总数: 1098, 事件总数: 152
   - CreateIdentity
 - Jssdk
   - GetJssdkTicket
+  - GenerateJssdkSignature
 - Lingo
   - CreateLingoDraft
   - UpdateLingoDraft
@@ -1056,9 +1474,12 @@ API 总数: 1098, 事件总数: 152
   - GetLingoRepoList
   - UploadLingoFile
   - DownloadLingoFile
+  - BatchHighlightLingoEntity
 - MDM
   - BindMDMUserAuthDataRelation
   - UnbindMDMUserAuthDataRelation
+  - GetMDMBatchCountryRegion
+  - ListMDMCountryRegion
 - Mail
   - GetMailUser
   - CreateMailGroup
@@ -1105,6 +1526,31 @@ API 总数: 1098, 事件总数: 152
   - DeleteMailUserMailboxAlias
   - GetMailUserMailboxAliasList
   - DeleteMailUserMailbox
+  - RemoveMailPublicMailboxToRecycleBin
+  - SubscribeMailUserMailboxEvent
+  - GetMailUserMailboxEventSubscription
+  - UnsubscribeMailUserMailboxEvent
+  - CreateMailUserMailboxFolder
+  - DeleteMailUserMailboxFolder
+  - ListMailUserMailboxFolder
+  - UpdateMailUserMailboxFolder
+  - CreateUserMailboxMailContact
+  - DeleteUserMailboxMailContact
+  - ListUserMailboxMailContact
+  - UpdateUserMailboxMailContact
+  - DownloadMailUserMailboxMessageAttachmentURL
+  - GetMailUserMailboxMessage
+  - GetMailUserMailboxMessageByCard
+  - ListMailUserMailboxMessage
+  - SendMailUserMailboxMessage
+  - CreateMailUserMailboxRule
+  - DeleteMailUserMailboxRule
+  - ListMailUserMailboxRule
+  - ReorderMailUserMailboxRule
+  - UpdateMailUserMailboxRule
+  - ApplyMailRule
+  - GetMailMessageSubscription
+  - SubscribeMailMessage
 - Message
   - SendEphemeralMessage
   - SendUrgentAppMessage
@@ -1137,23 +1583,31 @@ API 总数: 1098, 事件总数: 152
   - GetMessagePinList
   - GetMessageSpecialFocusList
   - GetMessageSpecialFocusUnread
-  - BatchUpdateURLPreview
-  - CreateAppFeedCard
-  - UpdateAppFeedCard
   - DeleteAppFeedCard
-  - UpdateAppFeedCardButton
-  - InstantReminderAppFeedCard
+  - UpdateAppFeedCard
+  - CreateAppFeedCard
+  - CreateIMTagRelation
   - ListIMTagRelation
+  - DeleteIMTagRelation
+  - UpdateAppFeedCardButton
+  - UpdateIMFeedCardBotTimeSentive
+  - InstantReminderAppFeedCard
   - CreateIMTag
   - UpdateIMTag
+  - BatchUpdateURLPreview
+  - CreateIMMessagePushFollowUp
   - MGetIMTag
-  - CreateIMTagRelation
-  - DeleteIMTagRelation
+  - Reply
+  - Send
 - Mina
   - MinaCodeToSession
 - Minutes
   - GetMinutesStatistics
   - GetMinutesMinute
+  - GetMinutesMinuteMedia
+  - GetMinutesMinuteTranscript
+- Moments
+  - GetMomentsPost
 - OKR
   - CreateOKRPeriod
   - UpdateOKRPeriod
@@ -1166,20 +1620,51 @@ API 总数: 1098, 事件总数: 152
   - GetOKRProgressRecord
   - CreateOKRProgressRecord
   - UploadOKRImage
-  - GetOKRReview
   - GetOKRMetricSourceList
   - GetOKRMetricSourceTableList
   - BatchUpdateOKRMetricSourceTableItem
   - UpdateOKRMetricSourceTableItem
   - GetOKRMetricSourceTableItem
   - GetOKRMetricSourceTableItemList
+  - GetOKRReview
 - Passport
   - GetPassportSession
+  - LogoutPassportSession
+- Payroll
+  - ListPayrollAcctItem
+  - ListPayrollCostAllocationDetail
+  - ListPayrollCostAllocationPlan
+  - ListPayrollCostAllocationReport
+  - ListPayrollDatasource
+  - QueryPayrollDatasourceRecord
+  - CreatePayrollDatasourceRecordSave
+  - ListPayrollPaygroup
+  - CreatePayrollPaymentActivityArchive
+  - ListPayrollPaymentActivity
+  - ListPayrollPaymentActivityDetail
+  - QueryPayrollPaymentDetail
 - Performance
   - GetPerformanceSemesterList
   - GetPerformanceStageTaskByUser
   - GetPerformanceStageTaskByPage
   - GetPerformanceReviewData
+  - QueryPerformanceActivity
+  - CreatePerformanceAdditionalInformationImport
+  - QueryPerformanceAdditionalInformation
+  - DeletePerformanceAdditionalInformationsBatch
+  - QueryPerformanceIndicator
+  - CreatePerformanceMetricDetailImport
+  - QueryPerformanceMetricDetail
+  - QueryPerformanceMetricField
+  - QueryPerformanceMetricLib
+  - ListPerformanceMetricTag
+  - QueryPerformanceMetricTemplate
+  - QueryPerformanceQuestion
+  - QueryPerformanceReviewData
+  - QueryPerformanceReviewTemplate
+  - QueryPerformanceReviewee
+  - CreatePerformanceUserGroupUserRelWrite
+  - QueryPerformanceUserInfo
 - PersonalSettings
   - CreatePersonalSettingsSystemStatus
   - DeletePersonalSettingsSystemStatus
@@ -1188,8 +1673,8 @@ API 总数: 1098, 事件总数: 152
   - BatchOpenPersonalSettingsSystemStatus
   - BatchClosePersonalSettingsSystemStatus
 - Report
-  - QueryReportRule
   - RemoveReportView
+  - QueryReportRule
   - QueryReportTask
 - Search
   - SearchMessage
@@ -1207,81 +1692,119 @@ API 总数: 1098, 事件总数: 152
   - DeleteSearchSchema
   - GetSearchSchema
   - CreateSearchSchema
+  - SearchDocWiki
+- SecurityAndCompliance
+  - ListSecurityAndComplianceOpenapiLogData
+  - UpdateSecurityAndComplianceDeviceApplyRecord
+  - CreateSecurityAndComplianceDeviceRecord
+  - DeleteSecurityAndComplianceDeviceRecord
+  - GetSecurityAndComplianceDeviceRecord
+  - ListSecurityAndComplianceDeviceRecord
+  - GetSecurityAndComplianceDeviceRecordMine
+  - UpdateSecurityAndComplianceDeviceRecord
 - Task
+  - CreateTaskFollower
+  - DeleteTaskFollower
+  - BatchDeleteTaskFollower
+  - GetTaskFollowerList
+  - CreateTaskCollaborator
+  - DeleteTaskCollaborator
+  - BatchDeleteTaskCollaborator
+  - GetTaskCollaboratorList
+  - CreateTaskReminder
+  - GetTaskReminderList
+  - DeleteTaskReminder
   - CreateTask
   - GetTask
-  - UpdateTask
-  - DeleteTask
-  - AddTaskMember
-  - RemoveTaskMember
   - GetTaskList
-  - AddTaskTasklist
-  - RemoveTaskTasklist
-  - AddTaskReminder
-  - RemoveTaskReminder
-  - AddTaskDependency
-  - RemoveTaskDependency
-  - CreateTaskSubtask
-  - GetTaskSubtaskList
-  - CreateTaskTasklist
-  - GetTaskTasklist
-  - UpdateTaskTasklist
-  - DeleteTaskTasklist
-  - AddTaskTasklistMember
-  - RemoveTaskTasklistMember
-  - GetTaskTaskListOfTasklist
-  - GetTaskTasklistList
-  - CreateTaskTasklistActivitySubscription
-  - GetTaskTasklistActivitySubscription
-  - UpdateTaskTasklistActivitySubscription
-  - DeleteTaskTasklistActivitySubscription
-  - GetTaskTasklistActivitySubscriptionList
+  - DeleteTask
+  - UpdateTask
+  - CompleteTask
+  - UncompleteTask
   - CreateTaskComment
   - GetTaskComment
-  - UpdateTaskComment
   - DeleteTaskComment
-  - GetTaskCommentList
-  - UploadTaskAttachment
-  - GetTaskAttachment
+  - UpdateTaskComment
   - DeleteTaskAttachment
+  - GetTaskAttachment
   - GetTaskAttachmentList
-  - CreateTaskSection
-  - GetTaskSection
-  - UpdateTaskSection
-  - DeleteTaskSection
-  - GetTaskSectionList
-  - GetTaskTaskListOfSection
-  - AddTaskCustomField
-  - RemoveTaskCustomField
+  - UploadTaskAttachment
+  - CreateTaskCommentV2
+  - DeleteTaskCommentV2
+  - GetTaskCommentV2
+  - ListTaskComment
+  - UpdateTaskCommentV2
   - CreateTaskCustomFieldOption
   - UpdateTaskCustomFieldOption
+  - AddTaskCustomField
+  - CreateTaskCustomField
+  - GetTaskCustomField
+  - ListTaskCustomField
+  - UpdateTaskCustomField
+  - RemoveTaskCustomField
+  - CreateTaskSection
+  - DeleteTaskSection
+  - GetTaskSection
+  - GetTaskSectionList
+  - UpdateTaskSection
+  - GetTaskTaskListOfSection
+  - CreateTaskSubtask
+  - GetTaskSubtaskList
+  - AddTaskDependency
+  - AddTaskMember
+  - AddTaskReminder
+  - AddTaskTasklist
+  - RemoveTaskDependency
+  - RemoveTaskMember
+  - RemoveTaskReminder
+  - RemoveTaskTasklist
+  - GetTaskTasklists
+  - CreateTaskTasklistActivitySubscription
+  - DeleteTaskTasklistActivitySubscription
+  - GetTaskTasklistActivitySubscription
+  - GetTaskTasklistActivitySubscriptionList
+  - UpdateTaskTasklistActivitySubscription
+  - AddTaskTasklistMember
+  - CreateTaskTasklist
+  - DeleteTaskTasklist
+  - GetTaskTasklist
+  - GetTaskTasklistList
+  - UpdateTaskTasklist
+  - RemoveTaskTasklistMember
+  - GetTaskTaskListOfTasklist
 - TaskV1
-  - CreateTaskV1Follower
-  - DeleteTaskV1Follower
-  - BatchDeleteTaskV1Follower
-  - GetTaskFollowerV1List
-  - CreateTaskV1Collaborator
-  - DeleteTaskV1Collaborator
-  - BatchDeleteTaskV1Collaborator
-  - GetTaskV1CollaboratorList
-  - CreateTaskV1Reminder
-  - GetTaskV1ReminderList
-  - DeleteTaskV1Reminder
+  - GetTaskV1CommentList
   - CreateTaskV1
+  - DeleteTaskV1
   - GetTaskV1
   - GetTaskV1List
-  - DeleteTaskV1
   - UpdateTaskV1
+  - BatchDeleteTaskV1Collaborator
+  - BatchDeleteTaskV1Follower
   - CompleteTaskV1
-  - UncompleteTaskV1
+  - CreateTaskV1Collaborator
   - CreateTaskV1Comment
-  - GetTaskV1Comment
-  - GetTaskV1CommentList
+  - CreateTaskV1Follower
+  - CreateTaskV1Reminder
+  - DeleteTaskV1Collaborator
   - DeleteTaskV1Comment
+  - DeleteTaskV1Follower
+  - DeleteTaskV1Reminder
+  - GetTaskFollowerV1List
+  - GetTaskV1CollaboratorList
+  - GetTaskV1Comment
+  - GetTaskV1ReminderList
+  - UncompleteTaskV1
   - UpdateTaskV1Comment
 - Tenant
   - GetTenantProductAssignInfo
   - GetTenant
+- TrustParty
+  - GetTrustPartyCollaborationTenantCollaborationDepartment
+  - GetTrustPartyCollaborationTenantCollaborationUser
+  - GetTrustPartyCollaborationTenant
+  - ListTrustPartyCollaborationTenant
+  - GetTrustPartyCollaborationTenantVisibleOrganization
 - VC
   - ApplyVCReserve
   - UpdateVCReserve
@@ -1335,6 +1858,25 @@ API 总数: 1098, 事件总数: 152
   - GetVCParticipantList
   - GetVCParticipantQualityList
   - GetVCResourceReservationList
+  - QueryVCRoomConfig
+  - SetVCRoomConfig
+  - SetVCRoomConfigCheckboardAccessCode
+  - SetVCRoomConfigRoomAccessCode
+  - ListVCMeetingDefaultRoom
+  - CreateVCMeetingDefaultBuilding
+  - GetVCMeetingDefaultRoomBatchGet
+  - UpdateVCMeetingDefaultBuilding
+  - CreateVCMeetingDefaultRoom
+  - UpdateVCMeetingDefaultRoom
+  - DeleteVCMeetingDefaultBuilding
+  - ListVCMeetingDefaultCountry
+  - GetVCMeetingDefaultBuildingBatchGetID
+  - ListVCMeetingDefaultDistrict
+  - DeleteVCMeetingDefaultRoom
+  - GetVCMeetingDefaultRoomBatchGetID
+  - ListVCMeetingDefaultBuilding
+  - GetVCMeetingDefaultBuildingBatchGet
+  - GetMeetingRoomCustomization
 - Verification
   - GetVerification
 

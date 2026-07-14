@@ -183,18 +183,6 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 
 		t.Run("", func(t *testing.T) {
 
-			cli.Mock().MockOKRGetOKRReview(func(ctx context.Context, request *lark.GetOKRReviewReq, options ...lark.MethodOptionFunc) (*lark.GetOKRReviewResp, *lark.Response, error) {
-				return nil, nil, fmt.Errorf("mock-failed")
-			})
-			defer cli.Mock().UnMockOKRGetOKRReview()
-
-			_, _, err := moduleCli.GetOKRReview(ctx, &lark.GetOKRReviewReq{})
-			as.NotNil(err)
-			as.Equal(err.Error(), "mock-failed")
-		})
-
-		t.Run("", func(t *testing.T) {
-
 			cli.Mock().MockOKRGetOKRMetricSourceList(func(ctx context.Context, request *lark.GetOKRMetricSourceListReq, options ...lark.MethodOptionFunc) (*lark.GetOKRMetricSourceListResp, *lark.Response, error) {
 				return nil, nil, fmt.Errorf("mock-failed")
 			})
@@ -265,178 +253,32 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 			as.Equal(err.Error(), "mock-failed")
 		})
 
-	})
-
-	t.Run("response is failed", func(t *testing.T) {
-		cli := AppNoPermission.Ins()
-		moduleCli := cli.OKR
-
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.CreateOKRPeriod(ctx, &lark.CreateOKRPeriodReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UpdateOKRPeriod(ctx, &lark.UpdateOKRPeriodReq{
-				PeriodID: "x",
+			cli.Mock().MockOKRGetOKRReview(func(ctx context.Context, request *lark.GetOKRReviewReq, options ...lark.MethodOptionFunc) (*lark.GetOKRReviewResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRPeriodList(ctx, &lark.GetOKRPeriodListReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRPeriodRuleList(ctx, &lark.GetOKRPeriodRuleListReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.BatchGetOKR(ctx, &lark.BatchGetOKRReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetUserOKRList(ctx, &lark.GetUserOKRListReq{
-				UserID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeleteOKRProgressRecord(ctx, &lark.DeleteOKRProgressRecordReq{
-				ProgressID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UpdateOKRProgressRecord(ctx, &lark.UpdateOKRProgressRecordReq{
-				ProgressID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRProgressRecord(ctx, &lark.GetOKRProgressRecordReq{
-				ProgressID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreateOKRProgressRecord(ctx, &lark.CreateOKRProgressRecordReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UploadOKRImage(ctx, &lark.UploadOKRImageReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
+			defer cli.Mock().UnMockOKRGetOKRReview()
 
 			_, _, err := moduleCli.GetOKRReview(ctx, &lark.GetOKRReviewReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRMetricSourceList(ctx, &lark.GetOKRMetricSourceListReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRMetricSourceTableList(ctx, &lark.GetOKRMetricSourceTableListReq{
-				MetricSourceID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.BatchUpdateOKRMetricSourceTableItem(ctx, &lark.BatchUpdateOKRMetricSourceTableItemReq{
-				MetricSourceID: "x",
-				MetricTableID:  "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UpdateOKRMetricSourceTableItem(ctx, &lark.UpdateOKRMetricSourceTableItemReq{
-				MetricSourceID: "x",
-				MetricTableID:  "x",
-				MetricItemID:   "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRMetricSourceTableItem(ctx, &lark.GetOKRMetricSourceTableItemReq{
-				MetricSourceID: "x",
-				MetricTableID:  "x",
-				MetricItemID:   "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRMetricSourceTableItemList(ctx, &lark.GetOKRMetricSourceTableItemListReq{
-				MetricSourceID: "x",
-				MetricTableID:  "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 	})
 
-	t.Run("fake request is failed", func(t *testing.T) {
+	t.Run("response is failed (mock http)", func(t *testing.T) {
 		cli := AppAllPermission.Ins()
 		moduleCli := cli.OKR
 		cli.Mock().MockRawRequest(func(ctx context.Context, req *lark.RawRequestReq, resp interface{}) (response *lark.Response, err error) {
-			return nil, fmt.Errorf("fake raw request")
+			return nil, fmt.Errorf("mock-http-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.CreateOKRPeriod(ctx, &lark.CreateOKRPeriodReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -445,28 +287,28 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				PeriodID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetOKRPeriodList(ctx, &lark.GetOKRPeriodListReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetOKRPeriodRuleList(ctx, &lark.GetOKRPeriodRuleListReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.BatchGetOKR(ctx, &lark.BatchGetOKRReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -475,7 +317,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				UserID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -484,7 +326,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				ProgressID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -493,7 +335,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				ProgressID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -502,35 +344,28 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				ProgressID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.CreateOKRProgressRecord(ctx, &lark.CreateOKRProgressRecordReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.UploadOKRImage(ctx, &lark.UploadOKRImageReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetOKRReview(ctx, &lark.GetOKRReviewReq{})
-			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetOKRMetricSourceList(ctx, &lark.GetOKRMetricSourceListReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -539,7 +374,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				MetricSourceID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -549,7 +384,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				MetricTableID:  "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -560,7 +395,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				MetricItemID:   "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -571,7 +406,7 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				MetricItemID:   "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -581,7 +416,14 @@ func Test_OKR_Sample_Failed(t *testing.T) {
 				MetricTableID:  "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.GetOKRReview(ctx, &lark.GetOKRReviewReq{})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 	})

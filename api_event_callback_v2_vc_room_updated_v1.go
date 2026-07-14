@@ -21,7 +21,7 @@ import (
 	"context"
 )
 
-// EventV2VCRoomUpdatedV1 当更新会议室时, 会触发该事件。
+// EventV2VCRoomUpdatedV1 当更新会议室时, 会触发该事件。{使用示例}(url=/api/tools/api_explore/api_explore_config?project=vc&version=v1&resource=room&event=updated)
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/vc-v1/room/events/updated
 // new doc: https://open.feishu.cn/document/server-docs/vc-v1/room/events/updated
@@ -66,4 +66,11 @@ type EventV2VCRoomUpdatedV1RoomRoomStatus struct {
 	ContactIDs       []string `json:"contact_ids,omitempty"`        // 联系人列表
 	DisableNotice    bool     `json:"disable_notice,omitempty"`     // 是否在禁用时发送通知给预定了该会议室的员工
 	ResumeNotice     bool     `json:"resume_notice,omitempty"`      // 是否在恢复启用时发送通知给预定了该会议室的员工
+}
+
+// EventV2VCRoomUpdatedV1RoomRoomStatusContactID ...
+type EventV2VCRoomUpdatedV1RoomRoomStatusContactID struct {
+	UnionID string `json:"union_id,omitempty"` // 用户的 union id
+	UserID  string `json:"user_id,omitempty"`  // 用户的 user id
+	OpenID  string `json:"open_id,omitempty"`  // 用户的 open id
 }

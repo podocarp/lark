@@ -62,7 +62,7 @@ func (r *Mock) UnMockHelpdeskDeleteHelpdeskTicketCustomizedField() {
 
 // DeleteHelpdeskTicketCustomizedFieldReq ...
 type DeleteHelpdeskTicketCustomizedFieldReq struct {
-	TicketCustomizedFieldID string `path:"ticket_customized_field_id" json:"-"` // 工单自定义字段ID, 示例值: "6948728206392295444"
+	TicketCustomizedFieldID string `path:"ticket_customized_field_id" json:"-"` // 工单自定义字段ID示例值: "6948728206392295444"
 }
 
 // DeleteHelpdeskTicketCustomizedFieldResp ...

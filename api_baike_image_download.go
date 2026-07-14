@@ -28,8 +28,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/baike-v1/file/download
 // new doc: https://open.feishu.cn/document/server-docs/baike-v1/file/download
-//
-// Deprecated
 func (r *BaikeService) DownloadBaikeImage(ctx context.Context, request *DownloadBaikeImageReq, options ...MethodOptionFunc) (*DownloadBaikeImageResp, *Response, error) {
 	if r.cli.mock.mockBaikeDownloadBaikeImage != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] Baike#DownloadBaikeImage mock enable")
@@ -64,7 +62,7 @@ func (r *Mock) UnMockBaikeDownloadBaikeImage() {
 
 // DownloadBaikeImageReq ...
 type DownloadBaikeImageReq struct {
-	FileToken string `path:"file_token" json:"-"` // 需要下载的文件 token, 示例值: "boxbcEcmKiD3***vgqWTpvdc7jc"
+	FileToken string `path:"file_token" json:"-"` // 需要下载的文件 token示例值: "boxbcEcmKiD3***vgqWTpvdc7jc"
 }
 
 // downloadBaikeImageResp ...

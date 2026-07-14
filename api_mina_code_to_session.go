@@ -27,8 +27,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uYjL24iN/ukjM04SOyQjL5IDN
 // new doc: https://open.feishu.cn/document/client-docs/gadget/-web-app-api/open-ability/login/code2session
-//
-// Deprecated
 func (r *MinaService) MinaCodeToSession(ctx context.Context, request *MinaCodeToSessionReq, options ...MethodOptionFunc) (*MinaCodeToSessionResp, *Response, error) {
 	if r.cli.mock.mockMinaMinaCodeToSession != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] Mina#MinaCodeToSession mock enable")
@@ -68,7 +66,7 @@ type MinaCodeToSessionReq struct {
 // MinaCodeToSessionResp ...
 type MinaCodeToSessionResp struct {
 	OpenID       string `json:"open_id,omitempty"`       // 用户的[Open ID](https://open.feishu.cn/document/home/user-identity-introduction/open-id), 用于在同一个应用中对用户进行标识
-	EmployeeID   string `json:"employee_id,omitempty"`   // 用户的[User ID](https://open.feishu.cn/document/home/user-identity-introduction/user-id), 在职员工在企业内的唯一标识, 仅当开通以下权限后 返回该字段: 获取用户 user ID
+	EmployeeID   string `json:"employee_id,omitempty"`   // 用户的[User ID](https://open.feishu.cn/document/home/user-identity-introduction/user-id), 在职员工在企业内的唯一标识 仅当开通以下权限后 返回该字段: 获取用户 user ID
 	SessionKey   string `json:"session_key,omitempty"`   // 会话密钥
 	TenantKey    string `json:"tenant_key,omitempty"`    // 用户所在企业唯一标识
 	AccessToken  string `json:"access_token,omitempty"`  // [user_access_token](https://open.feishu.cn/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM), 用户身份访问凭证

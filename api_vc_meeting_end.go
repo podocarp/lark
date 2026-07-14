@@ -60,7 +60,7 @@ func (r *Mock) UnMockVCEndVCMeeting() {
 
 // EndVCMeetingReq ...
 type EndVCMeetingReq struct {
-	MeetingID string `path:"meeting_id" json:"-"` // 会议ID（视频会议的唯一标识, 视频会议开始后才会产生）, 示例值: "6911188411932033028"
+	MeetingID string `path:"meeting_id" json:"-"` // 会议ID（视频会议的唯一标识, 视频会议开始后才会产生）示例值: "6911188411932033028"
 }
 
 // EndVCMeetingResp ...

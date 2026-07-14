@@ -58,7 +58,7 @@ func (r *Mock) UnMockMailDeletePublicMailbox() {
 
 // DeletePublicMailboxReq ...
 type DeletePublicMailboxReq struct {
-	PublicMailboxID string `path:"public_mailbox_id" json:"-"` // 要释放的公共邮箱地址, 示例值: "xxxxxx@abc.com"
+	PublicMailboxID string `path:"public_mailbox_id" json:"-"` // 要释放的公共邮箱地址示例值: "xxxxxx@abc.com"
 }
 
 // DeletePublicMailboxResp ...

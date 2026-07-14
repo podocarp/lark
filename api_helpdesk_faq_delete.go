@@ -62,7 +62,7 @@ func (r *Mock) UnMockHelpdeskDeleteHelpdeskFAQ() {
 
 // DeleteHelpdeskFAQReq ...
 type DeleteHelpdeskFAQReq struct {
-	ID string `path:"id" json:"-"` // id, 示例值: "12345"
+	ID string `path:"id" json:"-"` // id示例值: "12345"
 }
 
 // DeleteHelpdeskFAQResp ...

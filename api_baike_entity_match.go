@@ -27,8 +27,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/baike-v1/entity/match
 // new doc: https://open.feishu.cn/document/server-docs/baike-v1/entity/match
-//
-// Deprecated
 func (r *BaikeService) MatchBaikeEntity(ctx context.Context, request *MatchBaikeEntityReq, options ...MethodOptionFunc) (*MatchBaikeEntityResp, *Response, error) {
 	if r.cli.mock.mockBaikeMatchBaikeEntity != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] Baike#MatchBaikeEntity mock enable")
@@ -63,7 +61,7 @@ func (r *Mock) UnMockBaikeMatchBaikeEntity() {
 
 // MatchBaikeEntityReq ...
 type MatchBaikeEntityReq struct {
-	Word string `json:"word,omitempty"` // 搜索关键词, 将与词条名、别名进行精准匹配, 示例值: "飞书词典", 长度范围: `1` ～ `100` 字符
+	Word string `json:"word,omitempty"` // 搜索关键词, 将与词条名、别名进行精准匹配示例值: "飞书词典" 长度范围: `1` ～ `100` 字符
 }
 
 // MatchBaikeEntityResp ...
@@ -74,7 +72,7 @@ type MatchBaikeEntityResp struct {
 // MatchBaikeEntityRespResult ...
 type MatchBaikeEntityRespResult struct {
 	EntityID string `json:"entity_id,omitempty"` // 词条 ID
-	Type     int64  `json:"type,omitempty"`      // 命中的字段, 可选值有: 0: 词条名, 1: 全称, 2: 别名
+	Type     int64  `json:"type,omitempty"`      // 命中的字段可选值有: 词条名全称别名
 }
 
 // matchBaikeEntityResp ...

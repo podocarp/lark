@@ -25,8 +25,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/corehr-v1/country_region/list
 // new doc: https://open.feishu.cn/document/server-docs/corehr-v1/basic-infomation/location_data/list
-//
-// Deprecated
 func (r *CoreHRService) GetCoreHRCountryRegionList(ctx context.Context, request *GetCoreHRCountryRegionListReq, options ...MethodOptionFunc) (*GetCoreHRCountryRegionListResp, *Response, error) {
 	if r.cli.mock.mockCoreHRGetCoreHRCountryRegionList != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] CoreHR#GetCoreHRCountryRegionList mock enable")
@@ -60,8 +58,8 @@ func (r *Mock) UnMockCoreHRGetCoreHRCountryRegionList() {
 
 // GetCoreHRCountryRegionListReq ...
 type GetCoreHRCountryRegionListReq struct {
-	PageToken *string `query:"page_token" json:"-"` // 分页标记, 第一次请求不填, 表示从头开始遍历；分页查询结果还有更多项时会同时返回新的 page_token, 下次遍历可采用该 page_token 获取查询结果, 示例值: 1231231987
-	PageSize  int64   `query:"page_size" json:"-"`  // 分页大小, 示例值: 100
+	PageToken *string `query:"page_token" json:"-"` // 分页标记, 第一次请求不填, 表示从头开始遍历；分页查询结果还有更多项时会同时返回新的 page_token, 下次遍历可采用该 page_token 获取查询结果示例值: 1231231987
+	PageSize  int64   `query:"page_size" json:"-"`  // 分页大小示例值: 100
 }
 
 // GetCoreHRCountryRegionListResp ...

@@ -62,7 +62,7 @@ func (r *Mock) UnMockHelpdeskDeleteHelpdeskAgentSchedule() {
 
 // DeleteHelpdeskAgentScheduleReq ...
 type DeleteHelpdeskAgentScheduleReq struct {
-	AgentID string `path:"agent_id" json:"-"` // agent user id, 示例值: "12345"
+	AgentID string `path:"agent_id" json:"-"` // agent user id示例值: "12345"
 }
 
 // DeleteHelpdeskAgentScheduleResp ...

@@ -70,7 +70,7 @@ type GetSheetMetaReq struct {
 type GetSheetMetaResp struct {
 	SpreadSheetToken string                      `json:"spreadsheetToken,omitempty"` // spreadsheet 的 token
 	Properties       *GetSheetMetaRespProperties `json:"properties,omitempty"`       // spreadsheet 的属性
-	Sheets           []*GetSheetMetaRespSheet    `json:"sheets,omitempty"`           // spreadsheet 下的sheet列表
+	Sheets           []interface{}               `json:"sheets,omitempty"`           // spreadsheet 下的sheet列表
 }
 
 // GetSheetMetaRespProperties ...
@@ -84,16 +84,16 @@ type GetSheetMetaRespProperties struct {
 
 // GetSheetMetaRespSheet ...
 type GetSheetMetaRespSheet struct {
-	SheetID        string                               `json:"sheetId,omitempty"`        // sheet 的 id
-	Title          string                               `json:"title,omitempty"`          // sheet 的标题
-	Index          int64                                `json:"index,omitempty"`          // sheet 的位置
-	RowCount       int64                                `json:"rowCount,omitempty"`       // sheet 的最大行数
-	ColumnCount    int64                                `json:"columnCount,omitempty"`    // sheet 的最大列数
-	FrozenRowCount int64                                `json:"frozenRowCount,omitempty"` // 该 sheet 的冻结行数, 小于等于 sheet 的最大行数, 0表示未设置冻结
-	FrozenColCount int64                                `json:"frozenColCount,omitempty"` // 该 sheet 的冻结列数, 小于等于 sheet 的最大列数, 0表示未设置冻结
-	Merges         []*GetSheetMetaRespSheetMerge        `json:"merges,omitempty"`         // 该 sheet 中合并单元格的范围
-	ProtectedRange *GetSheetMetaRespSheetProtectedRange `json:"protectedRange,omitempty"` // 该 sheet 中保护范围
-	BlockInfo      *GetSheetMetaRespSheetBlockInfo      `json:"blockInfo,omitempty"`      // 若含有该字段, 则此工作表不为表格
+	SheetID        string                          `json:"sheetId,omitempty"`        // sheet 的 id
+	Title          string                          `json:"title,omitempty"`          // sheet 的标题
+	Index          int64                           `json:"index,omitempty"`          // sheet 的位置
+	RowCount       int64                           `json:"rowCount,omitempty"`       // sheet 的最大行数
+	ColumnCount    int64                           `json:"columnCount,omitempty"`    // sheet 的最大列数
+	FrozenRowCount int64                           `json:"frozenRowCount,omitempty"` // 该 sheet 的冻结行数, 小于等于 sheet 的最大行数, 0表示未设置冻结
+	FrozenColCount int64                           `json:"frozenColCount,omitempty"` // 该 sheet 的冻结列数, 小于等于 sheet 的最大列数, 0表示未设置冻结
+	Merges         []*GetSheetMetaRespSheetMerge   `json:"merges,omitempty"`         // 该 sheet 中合并单元格的范围
+	ProtectedRange []interface{}                   `json:"protectedRange,omitempty"` // 该 sheet 中保护范围
+	BlockInfo      *GetSheetMetaRespSheetBlockInfo `json:"blockInfo,omitempty"`      // 若含有该字段, 则此工作表不为表格
 }
 
 // GetSheetMetaRespSheetBlockInfo ...

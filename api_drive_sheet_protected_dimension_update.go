@@ -21,7 +21,10 @@ import (
 	"context"
 )
 
-// UpdateSheetProtectedDimension 该接口用于根据保护范围ID修改保护范围, 单次最多支持同时修改10个ID。
+// UpdateSheetProtectedDimension 修改电子表格工作表中指定的保护范围。
+//
+// ## 使用限制
+// 单次调用该接口, 最多支持修改 10 个保护范围。
 //
 // doc: https://open.feishu.cn/document/ukTMukTMukTM/uUTM5YjL1ETO24SNxkjN
 // new doc: https://open.feishu.cn/document/server-docs/docs/sheets-v3/protect-range/modify-protection-scopes
@@ -59,86 +62,88 @@ func (r *Mock) UnMockDriveUpdateSheetProtectedDimension() {
 
 // UpdateSheetProtectedDimensionReq ...
 type UpdateSheetProtectedDimensionReq struct {
-	SpreadSheetToken string                                    `path:"spreadsheetToken" json:"-"` // sheet 的 token, 获取方式见[在线表格开发指南](https://open.feishu.cn/document/ukTMukTMukTM/uATMzUjLwEzM14CMxMTN/overview)
-	Requests         *UpdateSheetProtectedDimensionReqRequests `json:"requests,omitempty"`        // 请求
+	SpreadSheetToken string                                    `path:"spreadsheetToken" json:"-"` // 电子表格的 token。可通过以下两种方式获取。了解更多, 参考[电子表格概述](https://open.feishu.cn/document/ukTMukTMukTM/uATMzUjLwEzM14CMxMTN/overview)。-  电子表格的 URL: https://sample.feishu.cn/sheets/[Iow7sNNEphp3WbtnbCscPqabcef]- 调用[获取文件夹中的文件清单](https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/drive-v1/file/list)      示例值: "Iow7sNNEphp3WbtnbCscPqabcef"
+	Requests         *UpdateSheetProtectedDimensionReqRequests `json:"requests,omitempty"`        // 需要增加保护范围的维度信息。支持传入多个维度信息。
 }
 
 // UpdateSheetProtectedDimensionReqRequests ...
 type UpdateSheetProtectedDimensionReqRequests struct {
-	ProtectID string                                             `json:"protectId,omitempty"` // 保护范围ID, 可以通过[获取表格元数据](https://open.feishu.cn/document/ukTMukTMukTM/uETMzUjLxEzM14SMxMTN) 接口获取
-	Dimension *UpdateSheetProtectedDimensionReqRequestsDimension `json:"dimension,omitempty"` // 行列保护信息
-	Editors   []*UpdateSheetProtectedDimensionReqRequestsEditor  `json:"editors,omitempty"`   // 可编辑保护范围的用户
-	LockInfo  *string                                            `json:"lockInfo,omitempty"`  // 保护说明
+	ProtectID string                                             `json:"protectId,omitempty"` // 保护范围 ID, 可通过[获取表格元数据](https://open.feishu.cn/document/ukTMukTMukTM/uETMzUjLxEzM14SMxMTN) 获取。
+	Dimension *UpdateSheetProtectedDimensionReqRequestsDimension `json:"dimension,omitempty"` // 要保护的行或列
+	Editors   []int64                                            `json:"editors,omitempty"`   // 增加或删除可编辑保护范围的用户 ID 列表
+	LockInfo  *string                                            `json:"lockInfo,omitempty"`  // 保护范围的备注信息
 }
 
 // UpdateSheetProtectedDimensionReqRequestsDimension ...
 type UpdateSheetProtectedDimensionReqRequestsDimension struct {
-	SheetID        string `json:"sheetId,omitempty"`        // sheetId
-	StartIndex     int64  `json:"startIndex,omitempty"`     // 保护行列起始下标, 下标从1开始
-	EndIndex       int64  `json:"endIndex,omitempty"`       // 保护行列终止下标, 下标从1开始
-	MajorDimension string `json:"majorDimension,omitempty"` // 保护范围ID对应的保护范围的维度, COLUMNS为保护列, ROWS为保护行
+	SheetID        string `json:"sheetId,omitempty"`        // 电子表格工作表的 ID。调用[获取工作表](https://open.feishu.cn/document/ukTMukTMukTM/uUDN04SN0QjL1QDN/sheets-v3/spreadsheet-sheet/query)获取。
+	MajorDimension string `json:"majorDimension,omitempty"` // 保护范围的维度。可选值: ROWS: 行- COLUMNS: 列
+	StartIndex     int64  `json:"startIndex"`               // 开始的行或列的索引。从 1 开始计数。若 `startIndex` 为 3, 则从第 3 行或列开始保护。包含第 3 行或列。
+	EndIndex       int64  `json:"endIndex,omitempty"`       // 结束的行或列的索引。从 1 开始计数。若 `endIndex` 为 7, 则保护到第 7 行或列。包含第 7 行或列。
 }
 
 // UpdateSheetProtectedDimensionReqRequestsEditor ...
 type UpdateSheetProtectedDimensionReqRequestsEditor struct {
-	AddEditors []*UpdateSheetProtectedDimensionReqRequestsEditorAddEditor `json:"addEditors,omitempty"` // 需要增加的用户的列表, 用户需要有文档的编辑权限
+	AddEditors []*UpdateSheetProtectedDimensionReqRequestsEditorAddEditor `json:"addEditors,omitempty"` // 增加的用户 ID 列表, 用户需要有文档的编辑权限。
 	DelEditors []*UpdateSheetProtectedDimensionReqRequestsEditorDelEditor `json:"delEditors,omitempty"` // 需要删除的用户的列表
 }
 
 // UpdateSheetProtectedDimensionReqRequestsEditorAddEditor ...
 type UpdateSheetProtectedDimensionReqRequestsEditorAddEditor struct {
-	MemberType string `json:"memberType,omitempty"` // 用户类型, 支持userId, openId, unionId
-	MemberID   string `json:"memberId,omitempty"`   // 用户类型对应的用户ID
+	MemberType string `json:"memberType,omitempty"` // 用户 ID 类型, 可选值: userId: 标识一个用户在某个租户内的身份。同一个用户在租户 A 和租户 B 内的 User ID 是不同的。在同一个租户内, 一个用户的 User ID 在所有应用（包括商店应用）中都保持一致。User ID 主要用于在不同的应用间打通用户数据。详情参考[如何获取 User ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-user-id)- openId: 标识一个用户在某个应用中的身份。同一个用户在不同应用中的 Open ID 不同。详情参考[如何获取 Open ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-openid)- unionId: 标识一个用户在某个应用开发商下的身份。同一用户在同一开发商下的应用中的 Union ID 是相同的, 在不同开发商下的应用中的 Union ID 是不同的。通过 Union ID, 应用开发商可以把同个用户在多个应用中的身份关联起来。详情参考[如何获取 Union ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-union-id)
+	MemberID   string `json:"memberId,omitempty"`   // 用户 ID, 类型由 `memberType` 决定。
 }
 
 // UpdateSheetProtectedDimensionReqRequestsEditorDelEditor ...
 type UpdateSheetProtectedDimensionReqRequestsEditorDelEditor struct {
-	MemberType string `json:"memberType,omitempty"` // 用户类型, 支持userId, openId, unionId
-	MemberID   string `json:"memberId,omitempty"`   // 用户类型对应的用户ID
+	MemberType string `json:"memberType,omitempty"` // 用户 ID 类型, 可选值: userId: 标识一个用户在某个租户内的身份。同一个用户在租户 A 和租户 B 内的 User ID 是不同的。在同一个租户内, 一个用户的 User ID 在所有应用（包括商店应用）中都保持一致。User ID 主要用于在不同的应用间打通用户数据。详情参考[如何获取 User ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-user-id)- openId: 标识一个用户在某个应用中的身份。同一个用户在不同应用中的 Open ID 不同。详情参考[如何获取 Open ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-openid)- unionId: 标识一个用户在某个应用开发商下的身份。同一用户在同一开发商下的应用中的 Union ID 是相同的, 在不同开发商下的应用中的 Union ID 是不同的。通过 Union ID, 应用开发商可以把同个用户在多个应用中的身份关联起来。详情参考[如何获取 Union ID](https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-union-id)
+	MemberID   string `json:"memberId,omitempty"`   // 用户 ID, 类型由 `memberType` 决定。
 }
 
 // UpdateSheetProtectedDimensionResp ...
 type UpdateSheetProtectedDimensionResp struct {
-	Replies []*UpdateSheetProtectedDimensionRespReply `json:"replies,omitempty"` // 响应
+	Replies []interface{} `json:"replies,omitempty"` // 修改后的保护范围的信息
 }
 
-// UpdateSheetProtectedDimensionRespReply ...
-type UpdateSheetProtectedDimensionRespReply struct {
-	SheetID   string                                           `json:"sheetId,omitempty"`   // sheet的id
-	Dimension *UpdateSheetProtectedDimensionRespReplyDimension `json:"dimension,omitempty"` // 成功修改的保护行列信息
-	Editors   []*UpdateSheetProtectedDimensionRespReplyEditor  `json:"editors,omitempty"`   // 可编辑保护范围的用户
-	LockInfo  string                                           `json:"lockInfo,omitempty"`  // 成功修改的保护说明
+// UpdateSheetProtectedDimensionRespReplie ...
+type UpdateSheetProtectedDimensionRespReplie struct {
+	ProtectID string                                            `json:"protectId,omitempty"` // 保护范围 ID
+	SheetID   string                                            `json:"sheetId,omitempty"`   // 工作表 ID
+	Dimension *UpdateSheetProtectedDimensionRespReplieDimension `json:"dimension,omitempty"` // 保护的行或列
+	Editors   []*UpdateSheetProtectedDimensionRespReplieEditor  `json:"editors,omitempty"`   // 增加或删除的可编辑保护范围的用户 ID 列表
+	LockInfo  string                                            `json:"lockInfo,omitempty"`  // 修改的备注信息
 }
 
-// UpdateSheetProtectedDimensionRespReplyDimension ...
-type UpdateSheetProtectedDimensionRespReplyDimension struct {
-	SheetID        string `json:"sheetId,omitempty"`        // sheetId
-	StartIndex     int64  `json:"startIndex,omitempty"`     // 保护行列起始下标, 下标从1开始
-	EndIndex       int64  `json:"endIndex,omitempty"`       // 保护行列终止下标, 下标从1开始
-	MajorDimension string `json:"majorDimension,omitempty"` // 保护范围的维度
+// UpdateSheetProtectedDimensionRespReplieDimension ...
+type UpdateSheetProtectedDimensionRespReplieDimension struct {
+	SheetID        string `json:"sheetId,omitempty"`        // 电子表格工作表的 ID
+	StartIndex     int64  `json:"startIndex"`               // 开始的行或列的索引。从 1 开始计数。若 startIndex 为 3, 则从第 3 行或列开始保护。包含第 3 行或列。
+	EndIndex       int64  `json:"endIndex,omitempty"`       // 结束的行或列的索引。从 1 开始计数。若 endIndex 为 7, 则保护到第 7 行或列。包含第 7 行或列。
+	MajorDimension string `json:"majorDimension,omitempty"` // 保护范围的维度。枚举值: ROWS: 行- COLUMNS: 列
 }
 
-// UpdateSheetProtectedDimensionRespReplyEditor ...
-type UpdateSheetProtectedDimensionRespReplyEditor struct {
-	AddEditors []*UpdateSheetProtectedDimensionRespReplyEditorAddEditor `json:"addEditors,omitempty"` // 成功增加的用户的列表
-	DelEditors []*UpdateSheetProtectedDimensionRespReplyEditorDelEditor `json:"delEditors,omitempty"` // 成功删除的用户的列表
+// UpdateSheetProtectedDimensionRespReplieEditor ...
+type UpdateSheetProtectedDimensionRespReplieEditor struct {
+	AddEditors []interface{} `json:"addEditors,omitempty"` // 增加的用户 ID 列表
+	DelEditors []interface{} `json:"delEditors,omitempty"` // 删除的用户的列表
 }
 
-// UpdateSheetProtectedDimensionRespReplyEditorAddEditor ...
-type UpdateSheetProtectedDimensionRespReplyEditorAddEditor struct {
-	MemberType string `json:"memberType,omitempty"` // 用户类型
-	MemberID   string `json:"memberId,omitempty"`   // 用户类型对应的用户ID
+// UpdateSheetProtectedDimensionRespReplieEditorAddEditor ...
+type UpdateSheetProtectedDimensionRespReplieEditorAddEditor struct {
+	MemberType string `json:"memberType,omitempty"` // 用户 ID 类型
+	MemberID   string `json:"memberId,omitempty"`   // 用户 ID, 类型由 memberType 决定。
 }
 
-// UpdateSheetProtectedDimensionRespReplyEditorDelEditor ...
-type UpdateSheetProtectedDimensionRespReplyEditorDelEditor struct {
-	MemberType string `json:"memberType,omitempty"` // 用户类型
-	MemberID   string `json:"memberId,omitempty"`   // 用户类型对应的用户ID
+// UpdateSheetProtectedDimensionRespReplieEditorDelEditor ...
+type UpdateSheetProtectedDimensionRespReplieEditorDelEditor struct {
+	MemberType string `json:"memberType,omitempty"` // 用户 ID 类型
+	MemberID   string `json:"memberId,omitempty"`   // 用户 ID, 类型由 memberType 决定。
 }
 
 // updateSheetProtectedDimensionResp ...
 type updateSheetProtectedDimensionResp struct {
-	Code int64                              `json:"code,omitempty"`
-	Msg  string                             `json:"msg,omitempty"`
-	Data *UpdateSheetProtectedDimensionResp `json:"data,omitempty"`
+	Code  int64                              `json:"code,omitempty"` // 错误码, 非 0 表示失败
+	Msg   string                             `json:"msg,omitempty"`  // 错误描述
+	Data  *UpdateSheetProtectedDimensionResp `json:"data,omitempty"`
+	Error *ErrorDetail                       `json:"error,omitempty"`
 }

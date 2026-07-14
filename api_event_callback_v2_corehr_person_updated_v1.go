@@ -21,19 +21,26 @@ import (
 	"context"
 )
 
-// EventV2CorehrPersonUpdatedV1 员工在飞书人事的「个人信息被更新」时将触发此事件, 个人信息的创建和删除不会触发该事件。注: 籍贯、政治面貌、户口类型、户口所在地变化不会触发该事件
+// EventV2CoreHRPersonUpdatedV1 员工个人信息发生变更时发送该事件, 场景举例:
+//
+// - 调用[【更新个人信息】](https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/corehr-v2/person/patch)接口
+// - 人事系统【编辑个人信息】、【导入编辑人员】功能
+// - 计算字段变更
+// 注: 籍贯、政治面貌、户口类型、户口所在地变化不会触发该事件{使用示例}(url=/api/tools/api_explore/api_explore_config?project=corehr&version=v1&resource=person&event=updated)
+// - 目前事件不保证有序
+// - 该事件在个人信息数据有变更时就会发送, 故频次可能较高。推荐使用[【人员信息变更事件】](https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/corehr-v2/employee/events/domain_event)
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/corehr-v1/person/events/updated
 // new doc: https://open.feishu.cn/document/server-docs/corehr-v1/employee/person/updated
-func (r *EventCallbackService) HandlerEventV2CorehrPersonUpdatedV1(f EventV2CorehrPersonUpdatedV1Handler) {
-	r.cli.eventHandler.eventV2CorehrPersonUpdatedV1Handler = f
+func (r *EventCallbackService) HandlerEventV2CoreHRPersonUpdatedV1(f EventV2CoreHRPersonUpdatedV1Handler) {
+	r.cli.eventHandler.eventV2CoreHRPersonUpdatedV1Handler = f
 }
 
-// EventV2CorehrPersonUpdatedV1Handler event EventV2CorehrPersonUpdatedV1 handler
-type EventV2CorehrPersonUpdatedV1Handler func(ctx context.Context, cli *Lark, schema string, header *EventHeaderV2, event *EventV2CorehrPersonUpdatedV1) (string, error)
+// EventV2CoreHRPersonUpdatedV1Handler event EventV2CoreHRPersonUpdatedV1 handler
+type EventV2CoreHRPersonUpdatedV1Handler func(ctx context.Context, cli *Lark, schema string, header *EventHeaderV2, event *EventV2CoreHRPersonUpdatedV1) (string, error)
 
-// EventV2CorehrPersonUpdatedV1 ...
-type EventV2CorehrPersonUpdatedV1 struct {
+// EventV2CoreHRPersonUpdatedV1 ...
+type EventV2CoreHRPersonUpdatedV1 struct {
 	PersonID     string   `json:"person_id,omitempty"`     // 被更新个人信息的 ID
 	FieldChanges []string `json:"field_changes,omitempty"` // 发生变更的字段, 若部分字段变更无需接受事件消息, 可根据该字段进行事件消息过滤
 }

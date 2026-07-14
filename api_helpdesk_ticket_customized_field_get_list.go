@@ -59,9 +59,9 @@ func (r *Mock) UnMockHelpdeskGetHelpdeskTicketCustomizedFieldList() {
 
 // GetHelpdeskTicketCustomizedFieldListReq ...
 type GetHelpdeskTicketCustomizedFieldListReq struct {
-	PageToken *string `query:"page_token" json:"-"` // 分页标记, 第一次请求不填, 表示从头开始遍历；分页查询结果还有更多项时会同时返回新的 page_token, 下次遍历可采用该 page_token 获取查询结果, 示例值: "6948728206392295444"
-	PageSize  *int64  `query:"page_size" json:"-"`  // 分页大小, 示例值: 10；默认为20, 最大值: `100`
-	Visible   *bool   `json:"visible,omitempty"`    // 是否可见, 示例值: true
+	PageToken *string `query:"page_token" json:"-"` // 分页标记, 第一次请求不填, 表示从头开始遍历；分页查询结果还有更多项时会同时返回新的 page_token, 下次遍历可采用该 page_token 获取查询结果示例值: "6948728206392295444"
+	PageSize  *int64  `query:"page_size" json:"-"`  // 分页大小示例值: 10；默认为20 最大值: `100`
+	Visible   *bool   `json:"visible,omitempty"`    // 是否可见示例值: true
 }
 
 // GetHelpdeskTicketCustomizedFieldListResp ...
@@ -97,6 +97,18 @@ type GetHelpdeskTicketCustomizedFieldListRespItemCreatedBy struct {
 	AvatarURL string `json:"avatar_url,omitempty"` // 用户头像url
 	Name      string `json:"name,omitempty"`       // 用户名
 	Email     string `json:"email,omitempty"`      // 用户邮箱
+}
+
+// GetHelpdeskTicketCustomizedFieldListRespItemDropdownOption ...
+type GetHelpdeskTicketCustomizedFieldListRespItemDropdownOption struct {
+	Children []*GetHelpdeskTicketCustomizedFieldListRespItemDropdownOptionChildren `json:"children,omitempty"` // 选项列表
+}
+
+// GetHelpdeskTicketCustomizedFieldListRespItemDropdownOptionChildren ...
+type GetHelpdeskTicketCustomizedFieldListRespItemDropdownOptionChildren struct {
+	Tag         string        `json:"tag,omitempty"`          // 选项ID
+	DisplayName string        `json:"display_name,omitempty"` // 展示名称
+	Children    []interface{} `json:"children,omitempty"`     // 同上: 选项列表, 只适用于多层下拉列表（最多可以设置三级下拉列表）
 }
 
 // GetHelpdeskTicketCustomizedFieldListRespItemUpdatedBy ...

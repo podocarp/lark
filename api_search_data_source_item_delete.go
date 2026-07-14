@@ -58,8 +58,8 @@ func (r *Mock) UnMockSearchDeleteSearchDataSourceItem() {
 
 // DeleteSearchDataSourceItemReq ...
 type DeleteSearchDataSourceItemReq struct {
-	DataSourceID string `path:"data_source_id" json:"-"` // 数据源的ID, 示例值: "service_ticket"
-	ItemID       string `path:"item_id" json:"-"`        // 数据记录的ID, 示例值: "01010111"
+	DataSourceID string `path:"data_source_id" json:"-"` // 数据源的ID示例值: "service_ticket"
+	ItemID       string `path:"item_id" json:"-"`        // 数据记录的ID示例值: "01010111"
 }
 
 // DeleteSearchDataSourceItemResp ...

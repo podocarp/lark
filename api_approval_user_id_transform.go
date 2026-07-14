@@ -21,7 +21,7 @@ import (
 	"context"
 )
 
-// TransformApprovalUserID 用于灰度租户内的 userID 相互转换。
+// TransformApprovalUserID 用于灰度企业内的 userID、larkID 相互转换。
 //
 // doc: https://open.feishu.cn/document/ukTMukTMukTM/uEDN5UjLxQTO14SM0kTN
 // new doc: https://open.feishu.cn/document/server-docs/approval-v4/approval-search/search-approval-id-(dedicated)
@@ -58,13 +58,19 @@ func (r *Mock) UnMockApprovalTransformApprovalUserID() {
 
 // TransformApprovalUserIDReq ...
 type TransformApprovalUserIDReq struct {
-	TenantKey  *string  `json:"tenant_key,omitempty"`   // 企业标识（user_id_list 不为空时必须）
-	UserIDList []string `json:"user_id_list,omitempty"` // Employee ID 数组（最大100个）
-	LarkIDList []int64  `json:"lark_id_list,omitempty"` // Lark User ID 数组（最大100个）
+	TenantKey  *string       `json:"tenant_key,omitempty"`   // 企业标识（user_id_list 不为空时必须）
+	UserIDList []string      `json:"user_id_list,omitempty"` // Employee ID 数组（最大100个）
+	LarkIDList []interface{} `json:"lark_id_list,omitempty"` // Lark User ID 数组（最大100个）
 }
 
 // TransformApprovalUserIDResp ...
 type TransformApprovalUserIDResp struct {
+}
+
+// TransformApprovalUserIDRespMsg ...
+type TransformApprovalUserIDRespMsg struct {
+	UserIDMap map[string]interface{} `json:"user_id_map,omitempty"` // -Employee ID数组
+	LarkIDMap map[string]interface{} `json:"lark_id_map,omitempty"` // -Lark User ID数组
 }
 
 // transformApprovalUserIDResp ...

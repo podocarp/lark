@@ -61,33 +61,39 @@ func Test_Passport_Sample_Failed(t *testing.T) {
 			as.Equal(err.Error(), "mock-failed")
 		})
 
-	})
-
-	t.Run("response is failed", func(t *testing.T) {
-		cli := AppNoPermission.Ins()
-		moduleCli := cli.Passport
-
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetPassportSession(ctx, &lark.GetPassportSessionReq{})
+			cli.Mock().MockPassportLogoutPassportSession(func(ctx context.Context, request *lark.LogoutPassportSessionReq, options ...lark.MethodOptionFunc) (*lark.LogoutPassportSessionResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
+			})
+			defer cli.Mock().UnMockPassportLogoutPassportSession()
+
+			_, _, err := moduleCli.LogoutPassportSession(ctx, &lark.LogoutPassportSessionReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 	})
 
-	t.Run("fake request is failed", func(t *testing.T) {
+	t.Run("response is failed (mock http)", func(t *testing.T) {
 		cli := AppAllPermission.Ins()
 		moduleCli := cli.Passport
 		cli.Mock().MockRawRequest(func(ctx context.Context, req *lark.RawRequestReq, resp interface{}) (response *lark.Response, err error) {
-			return nil, fmt.Errorf("fake raw request")
+			return nil, fmt.Errorf("mock-http-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetPassportSession(ctx, &lark.GetPassportSessionReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.LogoutPassportSession(ctx, &lark.LogoutPassportSessionReq{})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 	})

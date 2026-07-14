@@ -589,437 +589,291 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 			as.Equal(err.Error(), "mock-failed")
 		})
 
-	})
-
-	t.Run("response is failed", func(t *testing.T) {
-		cli := AppNoPermission.Ins()
-		moduleCli := cli.Mail
-
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailUser(ctx, &lark.GetMailUserReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreateMailGroup(ctx, &lark.CreateMailGroupReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeleteMailGroup(ctx, &lark.DeleteMailGroupReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailRemoveMailPublicMailboxToRecycleBin(func(ctx context.Context, request *lark.RemoveMailPublicMailboxToRecycleBinReq, options ...lark.MethodOptionFunc) (*lark.RemoveMailPublicMailboxToRecycleBinResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailRemoveMailPublicMailboxToRecycleBin()
+
+			_, _, err := moduleCli.RemoveMailPublicMailboxToRecycleBin(ctx, &lark.RemoveMailPublicMailboxToRecycleBinReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.UpdateMailGroupPatch(ctx, &lark.UpdateMailGroupPatchReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailSubscribeMailUserMailboxEvent(func(ctx context.Context, request *lark.SubscribeMailUserMailboxEventReq, options ...lark.MethodOptionFunc) (*lark.SubscribeMailUserMailboxEventResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailSubscribeMailUserMailboxEvent()
+
+			_, _, err := moduleCli.SubscribeMailUserMailboxEvent(ctx, &lark.SubscribeMailUserMailboxEventReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.UpdateMailGroup(ctx, &lark.UpdateMailGroupReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailGetMailUserMailboxEventSubscription(func(ctx context.Context, request *lark.GetMailUserMailboxEventSubscriptionReq, options ...lark.MethodOptionFunc) (*lark.GetMailUserMailboxEventSubscriptionResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailGetMailUserMailboxEventSubscription()
+
+			_, _, err := moduleCli.GetMailUserMailboxEventSubscription(ctx, &lark.GetMailUserMailboxEventSubscriptionReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroup(ctx, &lark.GetMailGroupReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailUnsubscribeMailUserMailboxEvent(func(ctx context.Context, request *lark.UnsubscribeMailUserMailboxEventReq, options ...lark.MethodOptionFunc) (*lark.UnsubscribeMailUserMailboxEventResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailUnsubscribeMailUserMailboxEvent()
+
+			_, _, err := moduleCli.UnsubscribeMailUserMailboxEvent(ctx, &lark.UnsubscribeMailUserMailboxEventReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupList(ctx, &lark.GetMailGroupListReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.BatchCreateMailGroupManager(ctx, &lark.BatchCreateMailGroupManagerReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailCreateMailUserMailboxFolder(func(ctx context.Context, request *lark.CreateMailUserMailboxFolderReq, options ...lark.MethodOptionFunc) (*lark.CreateMailUserMailboxFolderResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailCreateMailUserMailboxFolder()
+
+			_, _, err := moduleCli.CreateMailUserMailboxFolder(ctx, &lark.CreateMailUserMailboxFolderReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.BatchDeleteMailGroupManager(ctx, &lark.BatchDeleteMailGroupManagerReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailDeleteMailUserMailboxFolder(func(ctx context.Context, request *lark.DeleteMailUserMailboxFolderReq, options ...lark.MethodOptionFunc) (*lark.DeleteMailUserMailboxFolderResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailDeleteMailUserMailboxFolder()
+
+			_, _, err := moduleCli.DeleteMailUserMailboxFolder(ctx, &lark.DeleteMailUserMailboxFolderReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupManagerList(ctx, &lark.GetMailGroupManagerListReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailListMailUserMailboxFolder(func(ctx context.Context, request *lark.ListMailUserMailboxFolderReq, options ...lark.MethodOptionFunc) (*lark.ListMailUserMailboxFolderResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailListMailUserMailboxFolder()
+
+			_, _, err := moduleCli.ListMailUserMailboxFolder(ctx, &lark.ListMailUserMailboxFolderReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.CreateMailGroupMember(ctx, &lark.CreateMailGroupMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailUpdateMailUserMailboxFolder(func(ctx context.Context, request *lark.UpdateMailUserMailboxFolderReq, options ...lark.MethodOptionFunc) (*lark.UpdateMailUserMailboxFolderResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailUpdateMailUserMailboxFolder()
+
+			_, _, err := moduleCli.UpdateMailUserMailboxFolder(ctx, &lark.UpdateMailUserMailboxFolderReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.DeleteMailGroupMember(ctx, &lark.DeleteMailGroupMemberReq{
-				MailGroupID: "x",
-				MemberID:    "x",
+			cli.Mock().MockMailCreateUserMailboxMailContact(func(ctx context.Context, request *lark.CreateUserMailboxMailContactReq, options ...lark.MethodOptionFunc) (*lark.CreateUserMailboxMailContactResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailCreateUserMailboxMailContact()
+
+			_, _, err := moduleCli.CreateUserMailboxMailContact(ctx, &lark.CreateUserMailboxMailContactReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupMember(ctx, &lark.GetMailGroupMemberReq{
-				MailGroupID: "x",
-				MemberID:    "x",
+			cli.Mock().MockMailDeleteUserMailboxMailContact(func(ctx context.Context, request *lark.DeleteUserMailboxMailContactReq, options ...lark.MethodOptionFunc) (*lark.DeleteUserMailboxMailContactResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailDeleteUserMailboxMailContact()
+
+			_, _, err := moduleCli.DeleteUserMailboxMailContact(ctx, &lark.DeleteUserMailboxMailContactReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupMemberList(ctx, &lark.GetMailGroupMemberListReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailListUserMailboxMailContact(func(ctx context.Context, request *lark.ListUserMailboxMailContactReq, options ...lark.MethodOptionFunc) (*lark.ListUserMailboxMailContactResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailListUserMailboxMailContact()
+
+			_, _, err := moduleCli.ListUserMailboxMailContact(ctx, &lark.ListUserMailboxMailContactReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.BatchCreateMailGroupMember(ctx, &lark.BatchCreateMailGroupMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailUpdateUserMailboxMailContact(func(ctx context.Context, request *lark.UpdateUserMailboxMailContactReq, options ...lark.MethodOptionFunc) (*lark.UpdateUserMailboxMailContactResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailUpdateUserMailboxMailContact()
+
+			_, _, err := moduleCli.UpdateUserMailboxMailContact(ctx, &lark.UpdateUserMailboxMailContactReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.BatchDeleteMailGroupMember(ctx, &lark.BatchDeleteMailGroupMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailDownloadMailUserMailboxMessageAttachmentURL(func(ctx context.Context, request *lark.DownloadMailUserMailboxMessageAttachmentURLReq, options ...lark.MethodOptionFunc) (*lark.DownloadMailUserMailboxMessageAttachmentURLResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailDownloadMailUserMailboxMessageAttachmentURL()
+
+			_, _, err := moduleCli.DownloadMailUserMailboxMessageAttachmentURL(ctx, &lark.DownloadMailUserMailboxMessageAttachmentURLReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.CreateMailGroupPermissionMember(ctx, &lark.CreateMailGroupPermissionMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailGetMailUserMailboxMessage(func(ctx context.Context, request *lark.GetMailUserMailboxMessageReq, options ...lark.MethodOptionFunc) (*lark.GetMailUserMailboxMessageResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailGetMailUserMailboxMessage()
+
+			_, _, err := moduleCli.GetMailUserMailboxMessage(ctx, &lark.GetMailUserMailboxMessageReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.DeleteMailGroupPermissionMember(ctx, &lark.DeleteMailGroupPermissionMemberReq{
-				MailGroupID:        "x",
-				PermissionMemberID: "x",
+			cli.Mock().MockMailGetMailUserMailboxMessageByCard(func(ctx context.Context, request *lark.GetMailUserMailboxMessageByCardReq, options ...lark.MethodOptionFunc) (*lark.GetMailUserMailboxMessageByCardResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailGetMailUserMailboxMessageByCard()
+
+			_, _, err := moduleCli.GetMailUserMailboxMessageByCard(ctx, &lark.GetMailUserMailboxMessageByCardReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupPermissionMember(ctx, &lark.GetMailGroupPermissionMemberReq{
-				MailGroupID:        "x",
-				PermissionMemberID: "x",
+			cli.Mock().MockMailListMailUserMailboxMessage(func(ctx context.Context, request *lark.ListMailUserMailboxMessageReq, options ...lark.MethodOptionFunc) (*lark.ListMailUserMailboxMessageResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailListMailUserMailboxMessage()
+
+			_, _, err := moduleCli.ListMailUserMailboxMessage(ctx, &lark.ListMailUserMailboxMessageReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupPermissionMemberList(ctx, &lark.GetMailGroupPermissionMemberListReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailSendMailUserMailboxMessage(func(ctx context.Context, request *lark.SendMailUserMailboxMessageReq, options ...lark.MethodOptionFunc) (*lark.SendMailUserMailboxMessageResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailSendMailUserMailboxMessage()
+
+			_, _, err := moduleCli.SendMailUserMailboxMessage(ctx, &lark.SendMailUserMailboxMessageReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.BatchCreateMailGroupPermissionMember(ctx, &lark.BatchCreateMailGroupPermissionMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailCreateMailUserMailboxRule(func(ctx context.Context, request *lark.CreateMailUserMailboxRuleReq, options ...lark.MethodOptionFunc) (*lark.CreateMailUserMailboxRuleResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailCreateMailUserMailboxRule()
+
+			_, _, err := moduleCli.CreateMailUserMailboxRule(ctx, &lark.CreateMailUserMailboxRuleReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.BatchDeleteMailGroupPermissionMember(ctx, &lark.BatchDeleteMailGroupPermissionMemberReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailDeleteMailUserMailboxRule(func(ctx context.Context, request *lark.DeleteMailUserMailboxRuleReq, options ...lark.MethodOptionFunc) (*lark.DeleteMailUserMailboxRuleResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailDeleteMailUserMailboxRule()
+
+			_, _, err := moduleCli.DeleteMailUserMailboxRule(ctx, &lark.DeleteMailUserMailboxRuleReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.CreateMailGroupAlias(ctx, &lark.CreateMailGroupAliasReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailListMailUserMailboxRule(func(ctx context.Context, request *lark.ListMailUserMailboxRuleReq, options ...lark.MethodOptionFunc) (*lark.ListMailUserMailboxRuleResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailListMailUserMailboxRule()
+
+			_, _, err := moduleCli.ListMailUserMailboxRule(ctx, &lark.ListMailUserMailboxRuleReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.GetMailGroupAliasList(ctx, &lark.GetMailGroupAliasListReq{
-				MailGroupID: "x",
+			cli.Mock().MockMailReorderMailUserMailboxRule(func(ctx context.Context, request *lark.ReorderMailUserMailboxRuleReq, options ...lark.MethodOptionFunc) (*lark.ReorderMailUserMailboxRuleResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailReorderMailUserMailboxRule()
+
+			_, _, err := moduleCli.ReorderMailUserMailboxRule(ctx, &lark.ReorderMailUserMailboxRuleReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
-			_, _, err := moduleCli.DeleteMailGroupAlias(ctx, &lark.DeleteMailGroupAliasReq{
-				MailGroupID: "x",
-				AliasID:     "x",
+			cli.Mock().MockMailUpdateMailUserMailboxRule(func(ctx context.Context, request *lark.UpdateMailUserMailboxRuleReq, options ...lark.MethodOptionFunc) (*lark.UpdateMailUserMailboxRuleResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
 			})
+			defer cli.Mock().UnMockMailUpdateMailUserMailboxRule()
+
+			_, _, err := moduleCli.UpdateMailUserMailboxRule(ctx, &lark.UpdateMailUserMailboxRuleReq{})
 			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreatePublicMailbox(ctx, &lark.CreatePublicMailboxReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetPublicMailbox(ctx, &lark.GetPublicMailboxReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetPublicMailboxList(ctx, &lark.GetPublicMailboxListReq{})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UpdatePublicMailboxPatch(ctx, &lark.UpdatePublicMailboxPatchReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.UpdatePublicMailbox(ctx, &lark.UpdatePublicMailboxReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeletePublicMailbox(ctx, &lark.DeletePublicMailboxReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreatePublicMailboxMember(ctx, &lark.CreatePublicMailboxMemberReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetPublicMailboxMember(ctx, &lark.GetPublicMailboxMemberReq{
-				PublicMailboxID: "x",
-				MemberID:        "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetPublicMailboxMemberList(ctx, &lark.GetPublicMailboxMemberListReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.BatchCreatePublicMailboxMember(ctx, &lark.BatchCreatePublicMailboxMemberReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.BatchDeletePublicMailboxMember(ctx, &lark.BatchDeletePublicMailboxMemberReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeletePublicMailboxMember(ctx, &lark.DeletePublicMailboxMemberReq{
-				PublicMailboxID: "x",
-				MemberID:        "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.ClearPublicMailboxMember(ctx, &lark.ClearPublicMailboxMemberReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreateMailPublicMailboxAlias(ctx, &lark.CreateMailPublicMailboxAliasReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetMailPublicMailboxAliasList(ctx, &lark.GetMailPublicMailboxAliasListReq{
-				PublicMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeleteMailPublicMailboxAlias(ctx, &lark.DeleteMailPublicMailboxAliasReq{
-				PublicMailboxID: "x",
-				AliasID:         "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.CreateMailUserMailboxAlias(ctx, &lark.CreateMailUserMailboxAliasReq{
-				UserMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeleteMailUserMailboxAlias(ctx, &lark.DeleteMailUserMailboxAliasReq{
-				UserMailboxID: "x",
-				AliasID:       "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.GetMailUserMailboxAliasList(ctx, &lark.GetMailUserMailboxAliasListReq{
-				UserMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
-		})
-
-		t.Run("", func(t *testing.T) {
-
-			_, _, err := moduleCli.DeleteMailUserMailbox(ctx, &lark.DeleteMailUserMailboxReq{
-				UserMailboxID: "x",
-			})
-			as.NotNil(err)
-			as.True(lark.GetErrorCode(err) > 0, fmt.Sprintf("need get lark err, but get %s", err))
+			as.Equal(err.Error(), "mock-failed")
 		})
 
 	})
 
-	t.Run("fake request is failed", func(t *testing.T) {
+	t.Run("response is failed (mock http)", func(t *testing.T) {
 		cli := AppAllPermission.Ins()
 		moduleCli := cli.Mail
 		cli.Mock().MockRawRequest(func(ctx context.Context, req *lark.RawRequestReq, resp interface{}) (response *lark.Response, err error) {
-			return nil, fmt.Errorf("fake raw request")
+			return nil, fmt.Errorf("mock-http-failed")
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetMailUser(ctx, &lark.GetMailUserReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.CreateMailGroup(ctx, &lark.CreateMailGroupReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1028,7 +882,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1037,7 +891,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1046,7 +900,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1055,14 +909,14 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetMailGroupList(ctx, &lark.GetMailGroupListReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1071,7 +925,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1080,7 +934,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1089,7 +943,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1098,7 +952,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1108,7 +962,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MemberID:    "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1118,7 +972,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MemberID:    "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1127,7 +981,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1136,7 +990,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1145,7 +999,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1154,7 +1008,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1164,7 +1018,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PermissionMemberID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1174,7 +1028,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PermissionMemberID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1183,7 +1037,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1192,7 +1046,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1201,7 +1055,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1210,7 +1064,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1219,7 +1073,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MailGroupID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1229,14 +1083,14 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				AliasID:     "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.CreatePublicMailbox(ctx, &lark.CreatePublicMailboxReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1245,14 +1099,14 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.GetPublicMailboxList(ctx, &lark.GetPublicMailboxListReq{})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1261,7 +1115,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1270,7 +1124,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1279,7 +1133,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1288,7 +1142,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1298,7 +1152,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MemberID:        "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1307,7 +1161,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1316,7 +1170,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1325,7 +1179,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1335,7 +1189,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				MemberID:        "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1344,7 +1198,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1353,7 +1207,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1362,7 +1216,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				PublicMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1372,7 +1226,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				AliasID:         "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1381,7 +1235,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				UserMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1391,7 +1245,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				AliasID:       "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1400,7 +1254,7 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				UserMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 		t.Run("", func(t *testing.T) {
@@ -1409,7 +1263,213 @@ func Test_Mail_Sample_Failed(t *testing.T) {
 				UserMailboxID: "x",
 			})
 			as.NotNil(err)
-			as.Equal("fake raw request", err.Error())
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.RemoveMailPublicMailboxToRecycleBin(ctx, &lark.RemoveMailPublicMailboxToRecycleBinReq{
+				PublicMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.SubscribeMailUserMailboxEvent(ctx, &lark.SubscribeMailUserMailboxEventReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.GetMailUserMailboxEventSubscription(ctx, &lark.GetMailUserMailboxEventSubscriptionReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.UnsubscribeMailUserMailboxEvent(ctx, &lark.UnsubscribeMailUserMailboxEventReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.CreateMailUserMailboxFolder(ctx, &lark.CreateMailUserMailboxFolderReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.DeleteMailUserMailboxFolder(ctx, &lark.DeleteMailUserMailboxFolderReq{
+				UserMailboxID: "x",
+				FolderID:      "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.ListMailUserMailboxFolder(ctx, &lark.ListMailUserMailboxFolderReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.UpdateMailUserMailboxFolder(ctx, &lark.UpdateMailUserMailboxFolderReq{
+				UserMailboxID: "x",
+				FolderID:      "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.CreateUserMailboxMailContact(ctx, &lark.CreateUserMailboxMailContactReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.DeleteUserMailboxMailContact(ctx, &lark.DeleteUserMailboxMailContactReq{
+				UserMailboxID: "x",
+				MailContactID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.ListUserMailboxMailContact(ctx, &lark.ListUserMailboxMailContactReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.UpdateUserMailboxMailContact(ctx, &lark.UpdateUserMailboxMailContactReq{
+				UserMailboxID: "x",
+				MailContactID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.DownloadMailUserMailboxMessageAttachmentURL(ctx, &lark.DownloadMailUserMailboxMessageAttachmentURLReq{
+				UserMailboxID: "x",
+				MessageID:     "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.GetMailUserMailboxMessage(ctx, &lark.GetMailUserMailboxMessageReq{
+				UserMailboxID: "x",
+				MessageID:     "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.GetMailUserMailboxMessageByCard(ctx, &lark.GetMailUserMailboxMessageByCardReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.ListMailUserMailboxMessage(ctx, &lark.ListMailUserMailboxMessageReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.SendMailUserMailboxMessage(ctx, &lark.SendMailUserMailboxMessageReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.CreateMailUserMailboxRule(ctx, &lark.CreateMailUserMailboxRuleReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.DeleteMailUserMailboxRule(ctx, &lark.DeleteMailUserMailboxRuleReq{
+				UserMailboxID: "x",
+				RuleID:        "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.ListMailUserMailboxRule(ctx, &lark.ListMailUserMailboxRuleReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.ReorderMailUserMailboxRule(ctx, &lark.ReorderMailUserMailboxRuleReq{
+				UserMailboxID: "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.UpdateMailUserMailboxRule(ctx, &lark.UpdateMailUserMailboxRuleReq{
+				UserMailboxID: "x",
+				RuleID:        "x",
+			})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
 		})
 
 	})

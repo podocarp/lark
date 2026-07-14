@@ -59,7 +59,7 @@ func (r *Mock) UnMockOKRDeleteOKRProgressRecord() {
 
 // DeleteOKRProgressRecordReq ...
 type DeleteOKRProgressRecordReq struct {
-	ProgressID string `path:"progress_id" json:"-"` // 待删除的 OKR进展记录 ID, 示例值: "7041857032248410131"
+	ProgressID string `path:"progress_id" json:"-"` // 待删除的 OKR进展记录 ID, “创建 OKR 进展记录”接口返回值中会提供, 也可以通过 OKR 内容相关接口获取。示例值: "7041857032248410131"
 }
 
 // DeleteOKRProgressRecordResp ...

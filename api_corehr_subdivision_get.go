@@ -25,8 +25,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/corehr-v1/subdivision/get
 // new doc: https://open.feishu.cn/document/server-docs/corehr-v1/basic-infomation/location_data/get-2
-//
-// Deprecated
 func (r *CoreHRService) GetCoreHRSubdivision(ctx context.Context, request *GetCoreHRSubdivisionReq, options ...MethodOptionFunc) (*GetCoreHRSubdivisionResp, *Response, error) {
 	if r.cli.mock.mockCoreHRGetCoreHRSubdivision != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] CoreHR#GetCoreHRSubdivision mock enable")
@@ -60,7 +58,7 @@ func (r *Mock) UnMockCoreHRGetCoreHRSubdivision() {
 
 // GetCoreHRSubdivisionReq ...
 type GetCoreHRSubdivisionReq struct {
-	SubdivisionID string `path:"subdivision_id" json:"-"` // 省份/行政区 ID, 示例值: "67489937334909845"
+	SubdivisionID string `path:"subdivision_id" json:"-"` // 省份/行政区 ID示例值: "67489937334909845"
 }
 
 // GetCoreHRSubdivisionResp ...
@@ -72,8 +70,8 @@ type GetCoreHRSubdivisionResp struct {
 type GetCoreHRSubdivisionRespSubdivision struct {
 	ID              string                                              `json:"id,omitempty"`                // 省份/行政区id
 	Name            []*GetCoreHRSubdivisionRespSubdivisionName          `json:"name,omitempty"`              // 省份/行政区名称
-	CountryRegionID string                                              `json:"country_region_id,omitempty"` // 所属国家/地区id, 详细信息可通过[查询国家/地区信息]接口查询获得
-	SubdivisionType *GetCoreHRSubdivisionRespSubdivisionSubdivisionType `json:"subdivision_type,omitempty"`  // 行政区类型, 枚举值可通过文档[飞书人事枚举常量]行政区类型（subdivision_type）枚举定义部分获得
+	CountryRegionID string                                              `json:"country_region_id,omitempty"` // 所属国家/地区id, 详细信息可通过【查询国家/地区信息】接口查询获得
+	SubdivisionType *GetCoreHRSubdivisionRespSubdivisionSubdivisionType `json:"subdivision_type,omitempty"`  // 行政区类型, 枚举值可通过文档【飞书人事枚举常量】行政区类型（subdivision_type）枚举定义部分获得
 }
 
 // GetCoreHRSubdivisionRespSubdivisionName ...

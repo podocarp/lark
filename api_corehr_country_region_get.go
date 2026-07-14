@@ -25,8 +25,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/corehr-v1/country_region/get
 // new doc: https://open.feishu.cn/document/server-docs/corehr-v1/basic-infomation/location_data/get
-//
-// Deprecated
 func (r *CoreHRService) GetCoreHRCountryRegion(ctx context.Context, request *GetCoreHRCountryRegionReq, options ...MethodOptionFunc) (*GetCoreHRCountryRegionResp, *Response, error) {
 	if r.cli.mock.mockCoreHRGetCoreHRCountryRegion != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] CoreHR#GetCoreHRCountryRegion mock enable")
@@ -60,7 +58,7 @@ func (r *Mock) UnMockCoreHRGetCoreHRCountryRegion() {
 
 // GetCoreHRCountryRegionReq ...
 type GetCoreHRCountryRegionReq struct {
-	CountryRegionID string `path:"country_region_id" json:"-"` // 国家/地区 ID, 示例值: "67489937334909845"
+	CountryRegionID string `path:"country_region_id" json:"-"` // 国家/地区 ID示例值: "67489937334909845"
 }
 
 // GetCoreHRCountryRegionResp ...

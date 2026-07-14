@@ -21,9 +21,10 @@ import (
 	"context"
 )
 
-// DeleteCoreHRPreHire 删除待入职人员
+// DeleteCoreHRPreHire 删除待入职人员, 删除后无法搜索到待入职人员信息, 请谨慎操作
 //
-// doc: https://open.larkoffice.com/document/uAjLw4CM/ukTMukTMukTM/corehr-v2/pre_hire/delete
+// doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/corehr-v2/pre_hire/delete
+// new doc: https://open.feishu.cn/document/corehr-v1/pre_hire/delete
 func (r *CoreHRService) DeleteCoreHRPreHire(ctx context.Context, request *DeleteCoreHRPreHireReq, options ...MethodOptionFunc) (*DeleteCoreHRPreHireResp, *Response, error) {
 	if r.cli.mock.mockCoreHRDeleteCoreHRPreHire != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] CoreHR#DeleteCoreHRPreHire mock enable")
@@ -57,7 +58,7 @@ func (r *Mock) UnMockCoreHRDeleteCoreHRPreHire() {
 
 // DeleteCoreHRPreHireReq ...
 type DeleteCoreHRPreHireReq struct {
-	PreHireID string `path:"pre_hire_id" json:"-"` // 待入职ID, 示例值: "7345005664477775407"
+	PreHireID string `path:"pre_hire_id" json:"-"` // 待入职ID, 可通过[搜索接口](https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/corehr-v2/pre_hire/search)获取示例值: "7345005664477775407"
 }
 
 // DeleteCoreHRPreHireResp ...

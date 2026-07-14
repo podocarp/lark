@@ -27,8 +27,6 @@ import (
 //
 // doc: https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/baike-v1/entity/highlight
 // new doc: https://open.feishu.cn/document/server-docs/baike-v1/entity/highlight
-//
-// Deprecated
 func (r *BaikeService) HighlightBaikeEntity(ctx context.Context, request *HighlightBaikeEntityReq, options ...MethodOptionFunc) (*HighlightBaikeEntityResp, *Response, error) {
 	if r.cli.mock.mockBaikeHighlightBaikeEntity != nil {
 		r.cli.Log(ctx, LogLevelDebug, "[lark] Baike#HighlightBaikeEntity mock enable")
@@ -63,7 +61,7 @@ func (r *Mock) UnMockBaikeHighlightBaikeEntity() {
 
 // HighlightBaikeEntityReq ...
 type HighlightBaikeEntityReq struct {
-	Text string `json:"text,omitempty"` // 需要识别词条的内容（不超过1000字）, 示例值: "词典是飞书提供的一款知识管理工具", 长度范围: `1` ～ `1000` 字符
+	Text string `json:"text,omitempty"` // 需要识别词条的内容（不超过1000字）示例值: "词典是飞书提供的一款知识管理工具" 长度范围: `1` ～ `1000` 字符
 }
 
 // HighlightBaikeEntityResp ...
