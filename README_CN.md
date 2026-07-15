@@ -318,8 +318,11 @@ API 总数: 1630, 事件总数: 153
   - GetTenantAccessToken
   - SetAppTicket
 - Authen
+  - GenAuthorizeURL
   - CreateAuthenAccessToken
   - CreateAuthenRefreshAccessToken
+  - CreateUserAccessToken
+  - RefreshUserAccessToken
 - Baike
   - CreateBaikeDraft
   - CreateBaikeUpdate

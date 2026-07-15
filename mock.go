@@ -266,6 +266,8 @@ type Mock struct {
 	mockAuthGetUserInfo                                                     func(ctx context.Context, request *GetUserInfoReq, options ...MethodOptionFunc) (*GetUserInfoResp, *Response, error)
 	mockAuthenCreateAuthenAccessToken                                       func(ctx context.Context, request *CreateAuthenAccessTokenReq, options ...MethodOptionFunc) (*CreateAuthenAccessTokenResp, *Response, error)
 	mockAuthenCreateAuthenRefreshAccessToken                                func(ctx context.Context, request *CreateAuthenRefreshAccessTokenReq, options ...MethodOptionFunc) (*CreateAuthenRefreshAccessTokenResp, *Response, error)
+	mockAuthenCreateUserAccessToken                                         func(ctx context.Context, request *CreateUserAccessTokenReq, options ...MethodOptionFunc) (*CreateUserAccessTokenResp, *Response, error)
+	mockAuthenRefreshUserAccessToken                                        func(ctx context.Context, request *RefreshUserAccessTokenReq, options ...MethodOptionFunc) (*RefreshUserAccessTokenResp, *Response, error)
 	mockBaikeCreateBaikeDraft                                               func(ctx context.Context, request *CreateBaikeDraftReq, options ...MethodOptionFunc) (*CreateBaikeDraftResp, *Response, error)
 	mockBaikeCreateBaikeUpdate                                              func(ctx context.Context, request *CreateBaikeUpdateReq, options ...MethodOptionFunc) (*CreateBaikeUpdateResp, *Response, error)
 	mockBaikeCreateBaikeEntity                                              func(ctx context.Context, request *CreateBaikeEntityReq, options ...MethodOptionFunc) (*CreateBaikeEntityResp, *Response, error)

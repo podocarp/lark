@@ -318,8 +318,11 @@ API Count: 1630, Event Count: 153
   - GetTenantAccessToken
   - SetAppTicket
 - Authen
+  - GenAuthorizeURL
   - CreateAuthenAccessToken
   - CreateAuthenRefreshAccessToken
+  - CreateUserAccessToken
+  - RefreshUserAccessToken
 - Baike
   - CreateBaikeDraft
   - CreateBaikeUpdate

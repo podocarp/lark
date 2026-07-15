@@ -20,6 +20,7 @@ package test
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -39,6 +40,20 @@ func Test_Authen_Sample_Failed(t *testing.T) {
 		t.Run("", func(t *testing.T) {
 
 			_, _, err := moduleCli.CreateAuthenAccessToken(ctx, &lark.CreateAuthenAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal(err.Error(), "failed")
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.CreateUserAccessToken(ctx, &lark.CreateUserAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal(err.Error(), "failed")
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.RefreshUserAccessToken(ctx, &lark.RefreshUserAccessTokenReq{})
 			as.NotNil(err)
 			as.Equal(err.Error(), "failed")
 		})
@@ -73,6 +88,30 @@ func Test_Authen_Sample_Failed(t *testing.T) {
 			as.Equal(err.Error(), "mock-failed")
 		})
 
+		t.Run("", func(t *testing.T) {
+
+			cli.Mock().MockAuthenCreateUserAccessToken(func(ctx context.Context, request *lark.CreateUserAccessTokenReq, options ...lark.MethodOptionFunc) (*lark.CreateUserAccessTokenResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
+			})
+			defer cli.Mock().UnMockAuthenCreateUserAccessToken()
+
+			_, _, err := moduleCli.CreateUserAccessToken(ctx, &lark.CreateUserAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal(err.Error(), "mock-failed")
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			cli.Mock().MockAuthenRefreshUserAccessToken(func(ctx context.Context, request *lark.RefreshUserAccessTokenReq, options ...lark.MethodOptionFunc) (*lark.RefreshUserAccessTokenResp, *lark.Response, error) {
+				return nil, nil, fmt.Errorf("mock-failed")
+			})
+			defer cli.Mock().UnMockAuthenRefreshUserAccessToken()
+
+			_, _, err := moduleCli.RefreshUserAccessToken(ctx, &lark.RefreshUserAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal(err.Error(), "mock-failed")
+		})
+
 	})
 
 	t.Run("response is failed (mock http)", func(t *testing.T) {
@@ -96,5 +135,68 @@ func Test_Authen_Sample_Failed(t *testing.T) {
 			as.Equal("mock-http-failed", err.Error())
 		})
 
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.CreateUserAccessToken(ctx, &lark.CreateUserAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+		t.Run("", func(t *testing.T) {
+
+			_, _, err := moduleCli.RefreshUserAccessToken(ctx, &lark.RefreshUserAccessTokenReq{})
+			as.NotNil(err)
+			as.Equal("mock-http-failed", err.Error())
+		})
+
+	})
+}
+
+func Test_Authen_GenAuthorizeURL(t *testing.T) {
+	as := assert.New(t)
+
+	t.Run("default feishu URL", func(t *testing.T) {
+		cli := lark.New(lark.WithAppCredential("cli_test", "secret"))
+
+		rawURL := cli.Authen.GenAuthorizeURL(ctx, &lark.GenAuthorizeURLReq{
+			RedirectURI: "https://example.com/callback",
+		})
+
+		parsed, err := url.Parse(rawURL)
+		as.NoError(err)
+		as.Equal("https", parsed.Scheme)
+		as.Equal("accounts.feishu.cn", parsed.Host)
+		as.Equal("/open-apis/authen/v1/authorize", parsed.Path)
+		as.Equal("cli_test", parsed.Query().Get("client_id"))
+		as.Equal("code", parsed.Query().Get("response_type"))
+		as.Equal("https://example.com/callback", parsed.Query().Get("redirect_uri"))
+	})
+
+	t.Run("lark URL with optional params", func(t *testing.T) {
+		cli := lark.New(
+			lark.WithAppCredential("cli_unused", "secret"),
+			lark.WithOpenBaseURL("https://open.larksuite.com"),
+		)
+
+		rawURL := cli.Authen.GenAuthorizeURL(ctx, &lark.GenAuthorizeURLReq{
+			ClientID:            "cli_override",
+			ResponseType:        "code",
+			RedirectURI:         "https://example.com/oauth/callback",
+			Scope:               "im:message.send_as_user im:message",
+			State:               "state-1",
+			CodeChallenge:       "challenge",
+			CodeChallengeMethod: "S256",
+			Prompt:              "consent",
+		})
+
+		parsed, err := url.Parse(rawURL)
+		as.NoError(err)
+		as.Equal("accounts.larksuite.com", parsed.Host)
+		as.Equal("cli_override", parsed.Query().Get("client_id"))
+		as.Equal("im:message.send_as_user im:message", parsed.Query().Get("scope"))
+		as.Equal("state-1", parsed.Query().Get("state"))
+		as.Equal("challenge", parsed.Query().Get("code_challenge"))
+		as.Equal("S256", parsed.Query().Get("code_challenge_method"))
+		as.Equal("consent", parsed.Query().Get("prompt"))
 	})
 }

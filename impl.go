@@ -19,6 +19,7 @@ package lark
 
 import (
 	"context"
+	"strings"
 	"time"
 )
 
@@ -115,6 +116,15 @@ func (r *Lark) AppSecret() string {
 
 func (r *Lark) OpenBaseURL() string {
 	return r.openBaseURL
+}
+
+func (r *Lark) oauthBaseURL() string {
+	switch {
+	case strings.Contains(r.openBaseURL, "larksuite"):
+		return "https://accounts.larksuite.com"
+	default:
+		return "https://accounts.feishu.cn"
+	}
 }
 
 func (r *Lark) init() {
