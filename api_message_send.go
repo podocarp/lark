@@ -19,6 +19,7 @@ package lark
 
 import (
 	"context"
+	"errors"
 )
 
 // SendRawMessage 给指定用户或者会话发送消息, 支持文本、富文本、可交互的[消息卡片](https://open.feishu.cn/document/ukTMukTMukTM/uczM3QjL3MzN04yNzcDN)、群名片、个人名片、图片、视频、音频、文件、表情包。
@@ -37,14 +38,33 @@ func (r *MessageService) SendRawMessage(ctx context.Context, request *SendRawMes
 		return r.cli.mock.mockMessageSendRawMessage(ctx, request, options...)
 	}
 
+	return r.sendRawMessage(ctx, request, "SendRawMessage", newMethodOption(options), true)
+}
+
+func (r *MessageService) SendRawMessageAsUser(ctx context.Context, request *SendRawMessageReq, options ...MethodOptionFunc) (*SendRawMessageResp, *Response, error) {
+	if r.cli.mock.mockMessageSendRawMessage != nil {
+		r.cli.Log(ctx, LogLevelDebug, "[lark] Message#SendRawMessageAsUser mock enable")
+		return r.cli.mock.mockMessageSendRawMessage(ctx, request, options...)
+	}
+
+	methodOption := newMethodOption(options)
+	if methodOption.userAccessToken == "" {
+		return nil, nil, errors.New("user access token is required")
+	}
+
+	return r.sendRawMessage(ctx, request, "SendRawMessageAsUser", methodOption, false)
+}
+
+func (r *MessageService) sendRawMessage(ctx context.Context, request *SendRawMessageReq, api string, methodOption *MethodOption, needTenantAccessToken bool) (*SendRawMessageResp, *Response, error) {
 	req := &RawRequestReq{
 		Scope:                 "Message",
-		API:                   "SendRawMessage",
+		API:                   api,
 		Method:                "POST",
 		URL:                   r.cli.openBaseURL + "/open-apis/im/v1/messages",
 		Body:                  request,
-		MethodOption:          newMethodOption(options),
-		NeedTenantAccessToken: true,
+		MethodOption:          methodOption,
+		NeedTenantAccessToken: needTenantAccessToken,
+		NeedUserAccessToken:   !needTenantAccessToken,
 	}
 	resp := new(sendRawMessageResp)
 
