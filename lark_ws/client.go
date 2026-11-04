@@ -24,9 +24,10 @@ type Client struct {
 	connURL           *url.URL
 	serviceID         string
 	connID            string
-	autoReconnect     bool          // 是否自动重连，默认开启
-	reconnectNonce    int           // 首次重连抖动，单位秒
-	reconnectCount    int           // 重连次数，负数无限次
+	connectionHost    string   // optional host override for the websocket endpoint
+	autoReconnect     bool     // 是否自动重连，默认开启
+	reconnectNonce    int      // 首次重连抖动，单位秒
+	reconnectCount    int      // 重连次数，负数无限次
 	reconnectInterval time.Duration // 重连间隔
 	pingInterval      time.Duration // Ping间隔
 	cache             *cache
@@ -38,6 +39,17 @@ type ClientOption func(cli *Client)
 func WithAutoReconnect(b bool) ClientOption {
 	return func(cli *Client) {
 		cli.autoReconnect = b
+	}
+}
+
+// WithConnectionHost overrides the host of the websocket endpoint URL returned
+// by the callback/ws/endpoint handshake. Useful on ByteDance-internal networks
+// where the public msg-frontier host is firewalled and must be replaced with an
+// internal host (e.g. fsopen-websocket.byted.org). Pass an empty string to keep
+// the host the server hands back (default).
+func WithConnectionHost(host string) ClientOption {
+	return func(cli *Client) {
+		cli.connectionHost = host
 	}
 }
 

@@ -63,6 +63,13 @@ func (c *Client) saveURL(endpointURL string) error {
 	connID := u.Query().Get("device_id")
 	serviceID := u.Query().Get("service_id")
 
+	// If a connection host override is configured, swap it in so the websocket
+	// dial avoids the public msg-frontier host on internal networks (e.g. ->
+	// fsopen-websocket.byted.org).
+	if c.connectionHost != "" {
+		u.Host = c.connectionHost
+	}
+
 	c.connID = connID
 	c.serviceID = serviceID
 	c.connURL = u

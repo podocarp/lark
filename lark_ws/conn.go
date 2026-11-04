@@ -26,7 +26,10 @@ func (c *Client) connect(ctx context.Context) (err error) {
 	}
 	c.saveClientConfig(endpoint.ClientConfig)
 
-	conn, resp, err := c.wsDialer.Dial(endpoint.URL, nil)
+	// Dial the (possibly host-rewritten) saved URL. If a connection host
+	// override was configured, saveURL swapped in the internal host so we do
+	// not hit the public msg-frontier endpoint.
+	conn, resp, err := c.wsDialer.Dial(c.connURL.String(), nil)
 	if err != nil && resp == nil {
 		return err
 	}
@@ -35,7 +38,7 @@ func (c *Client) connect(ctx context.Context) (err error) {
 	}
 	c.conn = conn
 
-	c.logInfo(ctx, "connected to %s", endpoint.URL)
+	c.logInfo(ctx, "connected to %s", c.connURL)
 
 	go c.receiveMessageLoop(ctx)
 
